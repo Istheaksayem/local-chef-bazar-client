@@ -6,7 +6,7 @@ const Hero = () => {
 
     return (
         <section
-            className="bg-cover bg-center bg-no-repeat py-20 "
+            className="bg-cover bg-center bg-no-repeat py-20"
             style={{
                 backgroundImage: `url(${bgUrl})`
             }}
