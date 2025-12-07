@@ -1,12 +1,27 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router';
+import { toast } from 'react-toastify';
+import useAuth from '../../../Hooks/useAuth';
 
 const Register = () => {
     const { register, handleSubmit,formState:{errors} } = useForm()
+    const {registerUser} =useAuth()
 
     const handleRegistration = (data) => {
         console.log("after register", data)
+
+        registerUser(data.email,data.password)
+        .then(result =>{
+            console.log(result.user)
+        })
+        .catch(error =>{
+            console.log(error)
+        })
+
+         if (data.password !== data.confirmPassword) {
+            return toast("Passwords do not match!");
+        }
 
     }
     return (
@@ -70,9 +85,9 @@ const Register = () => {
                     <label className="label"> Confirm Password</label>
                     <input
                         type=" password"
-                        className="input"
-                       
-                        placeholder=" ConfirmPassword" />
+                        {...register("confirmPassword",{required:true})}
+                        className="input"     
+                        placeholder=" Confirm Password" />
                     
                     <button className="btn btn-neutral mt-4">Register</button>
                     <p>Already have an account? <Link to="/login" className='text-blue-400'>Login</Link></p>
