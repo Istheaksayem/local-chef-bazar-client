@@ -20,8 +20,8 @@ const Login = () => {
     }
     return (
           <div className="card bg-base-100 w-full mx-auto max-w-sm shrink-0 shadow-2xl">
-            <h3 className="text-3xl  font-bold">Welcome Back</h3>
-            <p className="font-semibold">Login with chef bazar</p>
+            <h3 className="text-3xl text-center font-bold">Welcome Back to local chef bazar</h3>
+            <p className="font-semibold text-center">Login with chef bazar</p>
             <form onSubmit={handleSubmit(handleLogin)} className="card-body">
                 <fieldset className="fieldset">
                     {/* email  field */}
@@ -41,7 +41,7 @@ const Login = () => {
                     }
                     <div><a className="link link-hover">Forgot password?</a></div>
                     <button className="btn btn-neutral mt-4">Login</button>
-                    <p>New to chef bazar? <Link state={location.state} to="/register" className='text-blue-400'>Register</Link></p>
+                    <p>New to chef bazar? <Link to="/register" className='text-blue-400'>Register</Link></p>
                 </fieldset>
             </form>
         </div>
