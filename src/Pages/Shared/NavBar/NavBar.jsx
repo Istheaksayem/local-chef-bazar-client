@@ -2,16 +2,17 @@ import React from 'react';
 import Logo from '../../../Component/Logo/Logo';
 import { Link, NavLink } from 'react-router';
 import useAuth from '../../../Hooks/useAuth';
+import userIcon from '../../../assets/user.png'
 
 const NavBar = () => {
-    const { user,logOut } = useAuth()
+    const { user, logOut } = useAuth()
 
-    const handleLogOut =() =>{
+    const handleLogOut = () => {
         logOut()
-        .then()
-        .catch(error =>{
-            console.log(error)
-        })
+            .then()
+            .catch(error => {
+                console.log(error)
+            })
     }
 
     const links = <>
@@ -38,7 +39,16 @@ const NavBar = () => {
                     {links}
                 </ul>
             </div>
+
             <div className="navbar-end">
+                <div className="relative group">
+                    <img
+                        className='w-12 h-12 rounded-full cursor-pointer border-2 border-gray-400'
+                        src={user && user.photoURL ? user.photoURL : userIcon}
+                        alt="User Avatar"
+                    />
+                    
+                </div>
                 {
                     user ?
                         <a onClick={handleLogOut} className='btn'>Log Out</a>
