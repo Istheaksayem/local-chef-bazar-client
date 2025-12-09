@@ -43,6 +43,7 @@ const NavBar = () => {
             <div className="navbar-end">
                 <div className="relative group">
                     <img
+                    referrerPolicy='no-referrer'
                         className='w-12 h-12 rounded-full cursor-pointer border-2 border-gray-400'
                         src={user && user.photoURL ? user.photoURL : userIcon}
                         alt="User Avatar"

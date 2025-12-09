@@ -1,12 +1,14 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router';
+import { Link, useNavigate, } from 'react-router';
 import { toast } from 'react-toastify';
 import useAuth from '../../../Hooks/useAuth';
 
 const Register = () => {
     const { register, handleSubmit, formState: { errors } } = useForm()
-    const { registerUser } = useAuth()
+    const { registerUser, updateUserProfile, setUser } = useAuth()
+    //  const location =useLocation()
+    const navigate = useNavigate()
 
     const handleRegistration = (data) => {
         console.log("after register", data)
@@ -19,10 +21,26 @@ const Register = () => {
         registerUser(data.email, data.password)
             .then(result => {
                 console.log(result.user)
+                // update user  profile to firebase
+                const userProfile = {
+                    displayName: data.name,
+                    photoURL: data.photo,
+                }
+                updateUserProfile(userProfile)
+                    .then(() => {
+                        console.log("user profile updated done")
+                        setUser((prev) => { return { ...prev, ...userProfile } })
+                        toast.success("Registration Successful!", {
+                            position: "top-center"
+                        });
+                        navigate('/')
+
+                    })
+                    .catch(error => {
+                        console.log(error)
+                    })
             })
-            .catch(error => {
-                console.log(error)
-            })
+
         console.log(data.password, data.confirmPassword)
 
 
@@ -52,6 +70,7 @@ const Register = () => {
                     <label className="label">name</label>
                     <input
                         type="text"
+                        {...register("name", { required: "Name is required" })}
                         className="input"
                         placeholder="Your name"
                     />
@@ -64,14 +83,27 @@ const Register = () => {
                     />
 
 
-                    {/* image field */}
-                    <label className="label">photo</label>
+
+                    <label className="label">Photo Url</label>
 
                     <input
-                        type="file"
-                        className="file-input file-input-info"
-                        placeholder="Your photo"
+                        type="text"
+                        {...register("photo", {
+                            required: "Photo URL is required",
+                            minLength: {
+                                value: 6,
+                                message: "URL must be at least 6 characters"
+                            }
+                        })}
+                        className="input"
+                        placeholder="Photo URL"
                     />
+
+                    {/* Error Message Show */}
+                    {errors.photo && (
+                        <p className="text-red-500 text-sm mt-1">{errors.photo.message}</p>
+                    )}
+
 
                     {/* password */}
                     <label className="label">Password</label>
