@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router";
+import ReviewSection from "../../Component/ReviewSection/ReviewSection";
 
 const MealDetails = () => {
   const { id } = useParams();
@@ -60,6 +61,8 @@ const MealDetails = () => {
           </button>
         </div>
       </div>
+      {/* reviw se */}
+      <ReviewSection></ReviewSection>
     </div>
   );
 };
