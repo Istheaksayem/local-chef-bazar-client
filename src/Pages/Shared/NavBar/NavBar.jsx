@@ -18,6 +18,12 @@ const NavBar = () => {
     const links = <>
         <li><NavLink to="/">Home</NavLink></li>
         <li><NavLink to="/meals">Meals</NavLink></li>
+
+        {
+            user && <>
+             <li><NavLink to="/dashboard/my-profile">My Profile</NavLink></li>
+            </>
+        }
     </>
     return (
         <div className="navbar bg-base-100 shadow-sm">

@@ -1,6 +1,7 @@
 /* eslint-disable */
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
+import { toast } from "react-toastify";
 
 
 const ReviewSection = () => {
@@ -25,7 +26,7 @@ const ReviewSection = () => {
             rating: parseInt(e.target.rating.value),
             comment: e.target.comment.value
         };
-
+        console.log(review)
         const res = await fetch("http://localhost:5000/reviews", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -33,9 +34,10 @@ const ReviewSection = () => {
         });
 
         const result = await res.json();
+        console.log(result)
 
-        if (result.success) {
-            alert("Review submitted successfully!");
+        if (result.insertedId) {
+            toast("Review submitted successfully!");
             setReviews([...reviews, review]);
             setIsOpen(false);
             
