@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router";
 import ReviewSection from "../../Component/ReviewSection/ReviewSection";
+import useAuth from "../../Hooks/useAuth";
+import { toast } from "react-toastify";
 
 const MealDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
   const [meal, setMeal] = useState(null);
+  const {user}=useAuth()
 
   useEffect(() => {
     fetch(`http://localhost:5000/meals/${id}`)
@@ -21,6 +24,37 @@ const MealDetails = () => {
   const handleOrder = () => {
     navigate(`/order/${meal._id}`);
   };
+
+   // ⭐ ADD TO FAVORITE FUNCTION
+  const handleFavorite = () => {
+    if (!user) {
+      return alert("Please login to add to favorite!");
+    }
+
+    const favoriteData = {
+      userEmail: user.email,
+      mealId: meal._id,
+      mealName: meal.foodName,
+      chefId: meal.chefId,
+      chefName: meal.chefName,
+      price: meal.price
+    };
+
+    fetch("http://localhost:5000/favorites", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(favoriteData)
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          toast("❤️ Added to favorites!");
+        } else {
+          toast(data.message);
+        }
+      });
+  };
+
 
   return (
     <div className="container mx-auto p-6">
@@ -58,6 +92,13 @@ const MealDetails = () => {
             className="mt-6 px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg w-full"
           >
             Order Now
+          </button>
+          {/*  Favorite Button */}
+          <button
+           onClick={handleFavorite}
+            className="mt-3 px-6 py-3 bg-red-500 text-white font-semibold rounded-lg w-full"
+          >
+            ❤️ Add to Favorite
           </button>
         </div>
       </div>

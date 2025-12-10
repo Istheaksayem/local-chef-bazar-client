@@ -7,7 +7,7 @@ const ReviewSection = () => {
     const { id } = useParams(); // foodId
     const [reviews, setReviews] = useState([]);
     const [isOpen, setIsOpen] = useState(false);
-    const navigate =useNavigate()
+    
 
     useEffect(() => {
         fetch(`http://localhost:5000/reviews/${id}`)
@@ -38,13 +38,13 @@ const ReviewSection = () => {
             alert("Review submitted successfully!");
             setReviews([...reviews, review]);
             setIsOpen(false);
-            navigate("/")
+            
         }
     };
 
     return (
         <div className="my-12">
-            <h2 className="text-3xl font-bold mb-6">Customer Reviews</h2>
+            <h2 className="text-3xl font-bold mb-6"> Reviews</h2>
 
             <button
                 onClick={() => setIsOpen(true)}

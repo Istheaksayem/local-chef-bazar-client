@@ -5,7 +5,7 @@ const Logo = () => {
     return (
         <div>
             <img
-            className='w-12 h-12 object-cover rounded-full border border-gray-300 shadow-md'
+            className='w-12 h-12 object-cover rounded-full border border-gray-300 shadow-md '
              src={logo} alt="" />
         </div>
     );
