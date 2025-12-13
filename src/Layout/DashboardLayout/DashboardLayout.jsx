@@ -1,6 +1,10 @@
 import React from 'react';
 import { CgProfile } from 'react-icons/cg';
 import { Link, NavLink, Outlet } from 'react-router';
+import { FaStar } from "react-icons/fa"
+import { FiShoppingBag } from "react-icons/fi";
+import { CiHeart } from "react-icons/ci";
+
 
 const DashboardLayout = () => {
   return (
@@ -39,16 +43,38 @@ const DashboardLayout = () => {
               <NavLink
                 className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="MyProfile"
                 to="/dashboard/my-profile">
-                  <CgProfile />
-                 <span className="is-drawer-close:hidden">MyProfile</span>
-                </NavLink>
-             
+                <CgProfile />
+                <span className="is-drawer-close:hidden">MyProfile</span>
+              </NavLink>
+
             </li>
             <li>
-               <NavLink to="/dashboard/my-orders">My Orders</NavLink>
+              <NavLink
+                className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="MyOrder"
+
+                to="/dashboard/my-orders">
+                <FiShoppingBag />
+                <span className="is-drawer-close:hidden">MyOrder</span>
+
+              </NavLink>
             </li>
             <li>
-               <NavLink to="/dashboard/my-review">My Review</NavLink>
+              <NavLink
+                className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="MyReview"
+
+                to="/dashboard/my-review">
+                <FaStar  />
+                <span className="is-drawer-close:hidden">MyReview</span>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="MyFavoritesPage"
+
+                to="/dashboard/my-favorites">
+                <CiHeart />
+                <span className="is-drawer-close:hidden">MyFavoritesPage</span>
+              </NavLink>
             </li>
 
             {/* List item */}

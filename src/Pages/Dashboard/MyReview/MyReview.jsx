@@ -32,14 +32,14 @@ const MyReviews = () => {
         fetch(`http://localhost:5000/reviews/${id}`, {
             method: "DELETE"
         })
-        .then(res => res.json())
-        .then(data => {
-            if (data.deletedCount > 0) {
-                toast.success("Review deleted successfully!");
-                setReviews(reviews.filter(r => r._id !== id));
-            }
-        })
-        .catch(err => console.error(err));
+            .then(res => res.json())
+            .then(data => {
+                if (data.deletedCount > 0) {
+                    toast.success("Review deleted successfully!");
+                    setReviews(reviews.filter(r => r._id !== id));
+                }
+            })
+            .catch(err => console.error(err));
     };
 
 
@@ -58,19 +58,19 @@ const MyReviews = () => {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(updatedData)
         })
-        .then(res => res.json())
-        .then(data => {
-            if (data.modifiedCount > 0) {
-                toast.success("Review updated successfully!");
-                setReviews(reviews.map(r =>
-                    r._id === selectedReview._id
-                        ? { ...r, ...updatedData }
-                        : r
-                ));
-                setSelectedReview(null);
-            }
-        })
-        .catch(err => console.error(err));
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount > 0) {
+                    toast.success("Review updated successfully!");
+                    setReviews(reviews.map(r =>
+                        r._id === selectedReview._id
+                            ? { ...r, ...updatedData }
+                            : r
+                    ));
+                    setSelectedReview(null);
+                }
+            })
+            .catch(err => console.error(err));
     };
 
     if (loading) return <p className="text-center mt-6">Loading your reviews...</p>;
@@ -82,9 +82,11 @@ const MyReviews = () => {
             {reviews.length === 0 ? (
                 <p className="text-center text-gray-500">You have not added any reviews yet.</p>
             ) : (
-                <div className="grid md:grid-cols-2 gap-4">
+                <div className="grid md:grid-cols-3 gap-4">
                     {reviews.map(review => (
-                        <div key={review._id} className="border p-4 rounded-xl shadow hover:shadow-lg transition">
+                        <div key={review._id} className="bg-white/80 backdrop-blur-md border border-gray-200 
+rounded-2xl p-5 shadow-md hover:shadow-xl 
+hover:-translate-y-1 transition-all duration-300">
                             <h3 className="font-bold text-lg">{review.mealName}</h3>
                             <p className="text-yellow-500 font-semibold">⭐ {review.rating}</p>
                             <p className="my-2">{review.comment}</p>

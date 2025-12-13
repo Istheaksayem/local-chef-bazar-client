@@ -49,7 +49,9 @@ const MealDetails = () => {
       .then(data => {
         if (data.success) {
           toast("❤️ Added to favorites!");
-        } else {
+          navigate("/dashboard/my-favorites")
+        }
+         else {
           toast(data.message);
         }
       });
