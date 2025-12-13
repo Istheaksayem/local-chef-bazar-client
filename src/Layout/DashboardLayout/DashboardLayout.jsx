@@ -63,7 +63,7 @@ const DashboardLayout = () => {
                 className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="MyReview"
 
                 to="/dashboard/my-review">
-                <FaStar  />
+                <FaStar />
                 <span className="is-drawer-close:hidden">MyReview</span>
               </NavLink>
             </li>
@@ -76,6 +76,10 @@ const DashboardLayout = () => {
                 <span className="is-drawer-close:hidden">MyFavoritesPage</span>
               </NavLink>
             </li>
+              <h2 className='font-bold'>Chef Dashboard here </h2>
+            <li>
+              <NavLink to="/dashboard/create-meal">Create Meal</NavLink>
+            </li>
 
             {/* List item */}
             <li>
@@ -85,6 +89,7 @@ const DashboardLayout = () => {
                 <span className="is-drawer-close:hidden">Settings</span>
               </button>
             </li>
+
           </ul>
         </div>
       </div>

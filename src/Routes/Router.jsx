@@ -15,6 +15,7 @@ import MyOrders from "../Pages/Dashboard/MyOrders/MyOrders";
 import PaymentSuccess from "../Pages/Dashboard/PaymentPage/PaymentSuccess";
 import MyReview from "../Pages/Dashboard/MyReview/MyReview";
 import FavoritesMeals from "../Pages/Dashboard/FavoriteMeals/FavoritesMeals";
+import CreateMeal from "../Pages/Dashboard/CreateMeal/CreateMeal";
 
 
 export const router = createBrowserRouter([
@@ -77,6 +78,10 @@ export const router = createBrowserRouter([
       {
         path:'my-favorites',
         Component:FavoritesMeals
+      },
+      {
+        path:'create-meal',
+        Component:CreateMeal
       }
     ]
   }
