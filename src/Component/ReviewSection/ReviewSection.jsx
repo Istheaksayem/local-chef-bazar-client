@@ -1,13 +1,18 @@
 /* eslint-disable */
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router";
+import {  useNavigate, useParams } from "react-router";
 import { toast } from "react-toastify";
+import useAuth from "../../Hooks/useAuth";
+
 
 
 const ReviewSection = () => {
     const { id } = useParams(); // foodId
     const [reviews, setReviews] = useState([]);
     const [isOpen, setIsOpen] = useState(false);
+    const navigate =useNavigate()
+    const {user} =useAuth()
+
     
 
     useEffect(() => {
@@ -24,7 +29,8 @@ const ReviewSection = () => {
             reviewerName: e.target.name.value,
             reviewerImage: e.target.image.value,
             rating: parseInt(e.target.rating.value),
-            comment: e.target.comment.value
+            comment: e.target.comment.value,
+            userEmail:user.email
         };
         console.log(review)
         const res = await fetch("http://localhost:5000/reviews", {
@@ -40,7 +46,7 @@ const ReviewSection = () => {
             toast("Review submitted successfully!");
             setReviews([...reviews, review]);
             setIsOpen(false);
-            
+            navigate('/dashboard/my-review')
         }
     };
 
@@ -102,6 +108,7 @@ const ReviewSection = () => {
                                 required
                                 className="w-full border p-2"
                             />
+                          
 
                             <input
                                 type="number"

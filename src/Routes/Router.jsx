@@ -10,6 +10,10 @@ import CustomerReviews from "../Component/CustomerReviews/CustomarReviews";
 import OrderPage from "../Pages/Order/OrderPage";
 import DashboardLayout from "../Layout/DashboardLayout/DashboardLayout";
 import MyProfile from "../Pages/Dashboard/MyProfile/MyProfile";
+import MyOrders from "../Pages/Dashboard/MyOrders/MyOrders";
+
+import PaymentSuccess from "../Pages/Dashboard/PaymentPage/PaymentSuccess";
+import MyReview from "../Pages/Dashboard/MyReview/MyReview";
 
 
 export const router = createBrowserRouter([
@@ -52,14 +56,22 @@ export const router = createBrowserRouter([
   {
     path: 'dashboard',
     element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
-    children:[
+    children: [
       {
-        path:'my-profile',
-        Component:MyProfile
+        path: 'my-profile',
+        Component: MyProfile
       },
       {
-         path:'my-orders',
-        Component:MyProfile
+        path: 'my-orders',
+        Component: MyOrders
+      },
+      {
+        path: 'payment/:id',
+        Component:PaymentSuccess
+      },
+      {
+        path:'my-review',
+        Component:MyReview
       }
     ]
   }
