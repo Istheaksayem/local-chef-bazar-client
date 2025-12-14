@@ -1,0 +1,93 @@
+import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
+import useAuth from "../../../Hooks/useAuth";
+import { useNavigate } from "react-router";
+
+const MyMeals = () => {
+  const { user } = useAuth();
+  const [meals, setMeals] = useState([]);
+  const navigate = useNavigate();
+
+  // 🔹 Load logged-in chef meals
+  useEffect(() => {
+    if (!user?.email) return;
+
+    fetch(`http://localhost:5000/meals?email=${user.email}`)
+      .then(res => res.json())
+      .then(data => setMeals(data));
+  }, [user]);
+
+  // 🗑️ Delete Meal
+  const handleDelete = (id) => {
+    const confirm = window.confirm("Are you sure you want to delete this meal?");
+    if (!confirm) return;
+
+    fetch(`http://localhost:5000/meals/${id}`, {
+      method: "DELETE"
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.deletedCount > 0) {
+          toast.success("Meal deleted successfully 🍽️");
+          setMeals(meals.filter(meal => meal._id !== id));
+        }
+      });
+  };
+
+  // ✏️ Update redirect
+  const handleUpdate = (id) => {
+    navigate(`/dashboard/update-meal/${id}`);
+  };
+
+  return (
+    <div className="p-6">
+      <h2 className="text-2xl font-bold mb-6">My Meals</h2>
+
+      {meals.length === 0 && (
+        <p className="text-gray-500">No meals added yet.</p>
+      )}
+
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {meals.map(meal => (
+          <div key={meal._id} className="card bg-white shadow-xl">
+            <figure>
+              <img src={meal.foodImage} alt={meal.foodName} className="h-48 w-full object-cover"/>
+            </figure>
+
+            <div className="card-body">
+              <h2 className="card-title">{meal.foodName}</h2>
+
+              <p><b>Chef:</b> {meal.chefName}</p>
+              <p><b>Chef ID:</b> {meal.chefId}</p>
+              <p><b>Price:</b> ৳{meal.price}</p>
+              <p><b>Rating:</b> {meal.rating}</p>
+              <p><b>Delivery:</b> {meal.estimatedDeliveryTime}</p>
+
+              <p className="text-sm">
+                <b>Ingredients:</b> {meal.ingredients.join(", ")}
+              </p>
+
+              <div className="flex gap-2 mt-4">
+                <button
+                  onClick={() => handleUpdate(meal._id)}
+                  className="btn btn-sm btn-info"
+                >
+                  Update
+                </button>
+
+                <button
+                  onClick={() => handleDelete(meal._id)}
+                  className="btn btn-sm btn-error"
+                >
+                  Delete
+                </button>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default MyMeals;

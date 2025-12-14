@@ -80,6 +80,9 @@ const DashboardLayout = () => {
             <li>
               <NavLink to="/dashboard/create-meal">Create Meal</NavLink>
             </li>
+            <li>
+              <NavLink to="/dashboard/my-meals">My Meals</NavLink>
+            </li>
 
             {/* List item */}
             <li>
