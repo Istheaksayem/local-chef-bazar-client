@@ -4,9 +4,12 @@ import { Link, NavLink, Outlet } from 'react-router';
 import { FaStar } from "react-icons/fa"
 import { FiShoppingBag } from "react-icons/fi";
 import { CiHeart } from "react-icons/ci";
+// import useAuth from '../../Hooks/useAuth';
 
 
 const DashboardLayout = () => {
+  // const {user} =useAuth();
+  
   return (
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
@@ -30,6 +33,7 @@ const DashboardLayout = () => {
           {/* Sidebar content here */}
           <ul className="menu w-full grow">
             {/* List item */}
+            {/* HOME */}
             <li>
               <Link to='/' className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Homepage">
                 {/* Home icon */}
@@ -39,6 +43,7 @@ const DashboardLayout = () => {
             </li>
 
             {/* our dashboard links */}
+            
             <li>
               <NavLink
                 className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="MyProfile"
@@ -82,6 +87,9 @@ const DashboardLayout = () => {
             </li>
             <li>
               <NavLink to="/dashboard/my-meals">My Meals</NavLink>
+            </li>
+            <li>
+              <NavLink to="/dashboard/order-request">Order requests</NavLink>
             </li>
 
             {/* List item */}

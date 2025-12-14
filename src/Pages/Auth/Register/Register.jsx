@@ -1,91 +1,110 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { Link, useNavigate, } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { toast } from 'react-toastify';
 import useAuth from '../../../Hooks/useAuth';
 
 const Register = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm()
-    const { registerUser, updateUserProfile, setUser } = useAuth()
-    //  const location =useLocation()
-    const navigate = useNavigate()
+    const {
+        register,
+        handleSubmit,
+        formState: { errors }
+    } = useForm();
 
-    const handleRegistration = (data) => {
-        console.log("after register", data)
+    const { registerUser, updateUserProfile, setUser } = useAuth();
+    const navigate = useNavigate();
+
+    // backend e user save
+    const saveUserToDB = async (user) => {
+        await fetch("http://localhost:5000/users", {
+            method: "POST",
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify(user)
+        });
+    };
+
+    const handleRegistration = async (data) => {
         if (data.password !== data.confirmPassword) {
-
-            toast("Passwords do not match!");
-            return
+            toast.error("Passwords do not match!");
+            return;
         }
 
-        registerUser(data.email, data.password)
-            .then(result => {
-                console.log(result.user)
-                // update user  profile to firebase
-                const userProfile = {
-                    displayName: data.name,
-                    photoURL: data.photo,
-                }
-                updateUserProfile(userProfile)
-                    .then(() => {
-                        console.log("user profile updated done")
-                        setUser((prev) => { return { ...prev, ...userProfile } })
-                        toast.success("Registration Successful!", {
-                            position: "top-center"
-                        });
-                        navigate('/')
+        try {
+            // 1️ Firebase register
+            await registerUser(data.email, data.password);
 
-                    })
-                    .catch(error => {
-                        console.log(error)
-                    })
-            })
+            //  Firebase profile update
+            const userProfile = {
+                displayName: data.name,
+                photoURL: data.photo,
+            };
 
-        console.log(data.password, data.confirmPassword)
+            await updateUserProfile(userProfile);
 
+            // 3️ Backend user save 
+            const userInfo = {
+                name: data.name,
+                email: data.email,
+                photo: data.photo,
+                role: "user" // default role
+            };
 
+            await saveUserToDB(userInfo);
 
-    }
+            // 4️⃣ Local state update
+            setUser((prev) => ({ ...prev, ...userProfile }));
+
+            toast.success("Registration Successful!", {
+                position: "top-center"
+            });
+
+            navigate('/');
+
+        } catch (error) {
+            console.error(error);
+            toast.error(error.message);
+        }
+    };
+
     return (
-        <div className="card bg-base-100 w-full mx-auto max-w-sm shrink-0 shadow-2xl">
-            <h3 className="text-3xl text-center font-bold">Create An Account</h3>
-            <p className="font-semibold text-center">Register with chef bazar</p>
+        <div className="card bg-base-100 w-full mx-auto max-w-sm shadow-2xl">
+            <h3 className="text-3xl text-center font-bold mt-4">Create An Account</h3>
+            <p className="font-semibold text-center">Register with Chef Bazar</p>
+
             <form
                 onSubmit={handleSubmit(handleRegistration)}
-                className="card-body">
+                className="card-body"
+            >
                 <fieldset className="fieldset">
-                    {/* Email field */}
+
+                    {/* Email */}
                     <label className="label">Email</label>
                     <input
                         type="email"
-                        {...register('email', { required: true })}
-
+                        {...register('email', { required: "Email is required" })}
                         className="input"
                         placeholder="Email"
                     />
-                    {errors.email?.type === 'required' && <p className='text-red-500'>Email is required</p>}
+                    {errors.email && (
+                        <p className="text-red-500 text-sm">{errors.email.message}</p>
+                    )}
 
-
-                    {/* name field */}
-                    <label className="label">name</label>
+                    {/* Name */}
+                    <label className="label">Name</label>
                     <input
                         type="text"
                         {...register("name", { required: "Name is required" })}
                         className="input"
                         placeholder="Your name"
                     />
-                    {/* Address field */}
-                    <label className="label">Address</label>
-                    <input
-                        type="text"
-                        className="input"
-                        placeholder="Your Address"
-                    />
+                    {errors.name && (
+                        <p className="text-red-500 text-sm">{errors.name.message}</p>
+                    )}
 
-
-
-                    <label className="label">Photo Url</label>
-
+                    {/* Photo */}
+                    <label className="label">Photo URL</label>
                     <input
                         type="text"
                         {...register("photo", {
@@ -98,42 +117,57 @@ const Register = () => {
                         className="input"
                         placeholder="Photo URL"
                     />
-
-                    {/* Error Message Show */}
                     {errors.photo && (
-                        <p className="text-red-500 text-sm mt-1">{errors.photo.message}</p>
+                        <p className="text-red-500 text-sm">{errors.photo.message}</p>
                     )}
 
-
-                    {/* password */}
+                    {/* Password */}
                     <label className="label">Password</label>
                     <input
                         type="password"
-                        className="input"
                         {...register('password', {
-                            required: true,
-                            minLength: 6
+                            required: "Password is required",
+                            minLength: {
+                                value: 6,
+                                message: "Password must be at least 6 characters"
+                            }
                         })}
-                        placeholder="Password" />
-                    {errors.password?.type === 'required' && <p className='text-red-500'>password is required</p>}
-                    {errors.password?.type === 'minLength' && <p className='text-red-500'>password must be 6 character or longer</p>}
-                    {/* confirm password */}
-                    <label className="label"> Confirm Password</label>
-                    <input
-                        type=" password"
-                        {...register("confirmPassword", { required: true })}
                         className="input"
-                        placeholder=" Confirm Password" />
+                        placeholder="Password"
+                    />
+                    {errors.password && (
+                        <p className="text-red-500 text-sm">{errors.password.message}</p>
+                    )}
 
-                    <button className="btn btn-neutral mt-4">Register</button>
-                    <p>Already have an account? <Link to="/login" className='text-blue-400'>Login</Link></p>
+                    {/* Confirm Password */}
+                    <label className="label">Confirm Password</label>
+                    <input
+                        type="password"
+                        {...register("confirmPassword", { required: "Confirm password required" })}
+                        className="input"
+                        placeholder="Confirm Password"
+                    />
+                    {errors.confirmPassword && (
+                        <p className="text-red-500 text-sm">
+                            {errors.confirmPassword.message}
+                        </p>
+                    )}
+
+                    <button className="btn btn-neutral mt-4">
+                        Register
+                    </button>
+
+                    <p className="text-center mt-2">
+                        Already have an account?
+                        <Link to="/login" className="text-blue-500 ml-1">
+                            Login
+                        </Link>
+                    </p>
+
                 </fieldset>
-
             </form>
-
         </div>
     );
 };
-
 
 export default Register;

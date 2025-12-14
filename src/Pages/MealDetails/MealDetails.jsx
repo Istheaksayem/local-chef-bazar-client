@@ -12,7 +12,7 @@ const MealDetails = () => {
   const {user}=useAuth()
 
   useEffect(() => {
-    fetch(`http://localhost:5000/meals/${id}`)
+    fetch(`http://localhost:5000/meals-details/${id}`)
       .then(res => res.json())
       .then(data => setMeal(data));
   }, [id]);
@@ -25,7 +25,7 @@ const MealDetails = () => {
     navigate(`/order/${meal._id}`);
   };
 
-   // ⭐ ADD TO FAVORITE FUNCTION
+   //  ADD TO FAVORITE FUNCTION
   const handleFavorite = () => {
     if (!user) {
       return alert("Please login to add to favorite!");

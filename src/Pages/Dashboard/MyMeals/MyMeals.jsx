@@ -67,7 +67,7 @@ const MyMeals = () => {
                 <b>Ingredients:</b> {meal.ingredients.join(", ")}
               </p>
 
-              <div className="flex gap-2 mt-4">
+              <div className="flex gap-2 mt-4 justify-between">
                 <button
                   onClick={() => handleUpdate(meal._id)}
                   className="btn btn-sm btn-info"
