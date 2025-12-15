@@ -20,6 +20,7 @@ import MyMeals from "../Pages/Dashboard/MyMeals/MyMeals";
 import UpdateMeal from "../Pages/Dashboard/UpdateMeal/UpdateMeal";
 import OrderRequest from "../Pages/Dashboard/OrderRequest/OrderRequest";
 import Payment from "../Pages/Dashboard/Payment/Payment";
+import PaymentCancel from "../Pages/Dashboard/paymentCancel/PaymentCancel";
 
 
 export const router = createBrowserRouter([
@@ -77,6 +78,14 @@ export const router = createBrowserRouter([
         Component:Payment
       },
       {
+        path:'payment-success',
+        Component:PaymentSuccess
+      },
+      {
+        path:'payment-cancelled',
+        Component:PaymentCancel
+      },
+      {
         path:'my-review',
         Component:MyReview
       },
@@ -100,6 +109,7 @@ export const router = createBrowserRouter([
         path:'order-request',
         Component:OrderRequest
       }
+
     ]
   }
 ]);
