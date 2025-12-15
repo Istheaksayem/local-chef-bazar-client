@@ -1,15 +1,18 @@
 import React from 'react';
 import { CgProfile } from 'react-icons/cg';
 import { Link, NavLink, Outlet } from 'react-router';
-import { FaStar } from "react-icons/fa"
+import { FaStar, FaUtensils } from "react-icons/fa"
 import { FiShoppingBag } from "react-icons/fi";
 import { CiHeart } from "react-icons/ci";
+import { IoRestaurant } from "react-icons/io5";
+import { MdOutlinePendingActions } from "react-icons/md";
+
 // import useAuth from '../../Hooks/useAuth';
 
 
 const DashboardLayout = () => {
-  // const {user} =useAuth();
-  
+  // const { user } = useAuth();
+
   return (
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
@@ -43,7 +46,53 @@ const DashboardLayout = () => {
             </li>
 
             {/* our dashboard links */}
-            
+
+            <li>
+              <NavLink
+                className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="MyProfile"
+                to="/dashboard/my-profile">
+                <CgProfile />
+                <span className="is-drawer-close:hidden">MyProfile</span>
+              </NavLink>
+
+            </li>
+            {/* {user.role === "user" && (
+              <> */}
+                <li>
+                  <NavLink
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="MyOrder"
+
+                    to="/dashboard/my-orders">
+                    <FiShoppingBag />
+                    <span className="is-drawer-close:hidden">MyOrder</span>
+
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="MyReview"
+
+                    to="/dashboard/my-review">
+                    <FaStar />
+                    <span className="is-drawer-close:hidden">MyReview</span>
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="MyFavoritesPage"
+
+                    to="/dashboard/my-favorites">
+                    <CiHeart />
+                    <span className="is-drawer-close:hidden">MyFavoritesPage</span>
+                  </NavLink>
+                </li>
+              {/* </> */}
+            {/* )} */}
+
+            {/*Chef  Dashboard  */}
+            {/* {user?.role ==="chef"&&(
+              <> */}
+              <h2 className='font-bold'>Chef Dashboard here </h2>
             <li>
               <NavLink
                 className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="MyProfile"
@@ -55,43 +104,38 @@ const DashboardLayout = () => {
             </li>
             <li>
               <NavLink
-                className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="MyOrder"
+                className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="CreateMeal"
 
-                to="/dashboard/my-orders">
-                <FiShoppingBag />
-                <span className="is-drawer-close:hidden">MyOrder</span>
+                to="/dashboard/create-meal">
+                <FaUtensils></FaUtensils>
+                <span className="is-drawer-close:hidden">Create Meal</span>
 
               </NavLink>
             </li>
             <li>
               <NavLink
-                className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="MyReview"
+                className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="MyMeals"
 
-                to="/dashboard/my-review">
-                <FaStar />
-                <span className="is-drawer-close:hidden">MyReview</span>
+                to="/dashboard/my-meals">
+                <IoRestaurant />
+                <span className="is-drawer-close:hidden">My Meals</span>
+
               </NavLink>
             </li>
             <li>
               <NavLink
-                className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="MyFavoritesPage"
+                className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="OrderRequest"
 
-                to="/dashboard/my-favorites">
-                <CiHeart />
-                <span className="is-drawer-close:hidden">MyFavoritesPage</span>
+                to="/dashboard/order-request">
+                <MdOutlinePendingActions />
+
+                <span className="is-drawer-close:hidden">Order requests</span>
+
               </NavLink>
             </li>
-              <h2 className='font-bold'>Chef Dashboard here </h2>
-            <li>
-              <NavLink to="/dashboard/create-meal">Create Meal</NavLink>
-            </li>
-            <li>
-              <NavLink to="/dashboard/my-meals">My Meals</NavLink>
-            </li>
-            <li>
-              <NavLink to="/dashboard/order-request">Order requests</NavLink>
-            </li>
 
+              {/* </>
+            )} */}
             {/* List item */}
             <li>
               <button className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Settings">

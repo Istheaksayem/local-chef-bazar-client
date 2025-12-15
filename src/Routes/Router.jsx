@@ -19,6 +19,7 @@ import CreateMeal from "../Pages/Dashboard/CreateMeal/CreateMeal";
 import MyMeals from "../Pages/Dashboard/MyMeals/MyMeals";
 import UpdateMeal from "../Pages/Dashboard/UpdateMeal/UpdateMeal";
 import OrderRequest from "../Pages/Dashboard/OrderRequest/OrderRequest";
+import Payment from "../Pages/Dashboard/Payment/Payment";
 
 
 export const router = createBrowserRouter([
@@ -70,9 +71,10 @@ export const router = createBrowserRouter([
         path: 'my-orders',
         Component: MyOrders
       },
+      
       {
         path: 'payment/:id',
-        Component:PaymentSuccess
+        Component:Payment
       },
       {
         path:'my-review',
