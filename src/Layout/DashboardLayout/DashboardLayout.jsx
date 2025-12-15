@@ -1,7 +1,7 @@
 import React from 'react';
 import { CgProfile } from 'react-icons/cg';
 import { Link, NavLink, Outlet } from 'react-router';
-import { FaStar, FaUtensils } from "react-icons/fa"
+import { FaHistory, FaStar, FaUtensils } from "react-icons/fa"
 import { FiShoppingBag } from "react-icons/fi";
 import { CiHeart } from "react-icons/ci";
 import { IoRestaurant } from "react-icons/io5";
@@ -58,41 +58,51 @@ const DashboardLayout = () => {
             </li>
             {/* {user.role === "user" && (
               <> */}
-                <li>
-                  <NavLink
-                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="MyOrder"
+            <li>
+              <NavLink
+                className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="MyOrder"
 
-                    to="/dashboard/my-orders">
-                    <FiShoppingBag />
-                    <span className="is-drawer-close:hidden">MyOrder</span>
+                to="/dashboard/my-orders">
+                <FiShoppingBag />
+                <span className="is-drawer-close:hidden">MyOrder</span>
 
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="MyReview"
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="MyReview"
 
-                    to="/dashboard/my-review">
-                    <FaStar />
-                    <span className="is-drawer-close:hidden">MyReview</span>
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="MyFavoritesPage"
+                to="/dashboard/my-review">
+                <FaStar />
+                <span className="is-drawer-close:hidden">MyReview</span>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="MyFavoritesPage"
 
-                    to="/dashboard/my-favorites">
-                    <CiHeart />
-                    <span className="is-drawer-close:hidden">MyFavoritesPage</span>
-                  </NavLink>
-                </li>
-              {/* </> */}
+                to="/dashboard/my-favorites">
+                <CiHeart />
+                <span className="is-drawer-close:hidden">MyFavoritesPage</span>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="PaymentHistory"
+
+                to="/dashboard/payment-history">
+                  <FaHistory></FaHistory>
+                <span className="is-drawer-close:hidden">Payment History</span>
+              </NavLink>
+
+            </li>
+            {/* </> */}
             {/* )} */}
 
             {/*Chef  Dashboard  */}
             {/* {user?.role ==="chef"&&(
               <> */}
-              <h2 className='font-bold'>Chef Dashboard here </h2>
+            <h2 className='font-bold'>Chef Dashboard here </h2>
             <li>
               <NavLink
                 className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="MyProfile"
@@ -134,7 +144,7 @@ const DashboardLayout = () => {
               </NavLink>
             </li>
 
-              {/* </>
+            {/* </>
             )} */}
             {/* List item */}
             <li>
