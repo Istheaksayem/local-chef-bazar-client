@@ -8,34 +8,30 @@ import useAuth from "../../../Hooks/useAuth";
 const MyOrders = () => {
     const { user } = useAuth();
     const [orders, setOrders] = useState([]);
-    
-const handlePay = async (order) => {
-    try {
-        const res = await fetch("http://localhost:5000/create-checkout-session", {
-            method: "POST",
+
+    const handlePayment = async (order) => {
+        const paymentInfo = {
+            price: order.price,
+            orderId: order._id,
+            orderName: order.mealName,
+            userEmail: user.email
+        }
+        const res = await fetch('http://localhost:5000/payment-checkout-session', {
+            method: 'POST',
             headers: {
-                "content-type": "application/json",
+                'Content-Type': 'application/json',
             },
-            body: JSON.stringify({
-                _id: order._id,
-                mealName: order.mealName,
-                price: order.price,
-                quantity: order.quantity,
-            }),
+            body: JSON.stringify(paymentInfo)
         });
 
-        const data = await res.json();
-        console.log("Stripe URL:", data.url); // 🔍 debug
-
-        if (data.url) {
-            window.location.href = data.url; // ✅ redirect
-        } else {
-            alert("Stripe URL not found");
+        if (!res.ok) {
+            throw new Error("Payment session failed");
         }
-    } catch (error) {
-        console.error("Payment Error:", error);
+
+        const data = await res.json();
+        window.location.href = data.url;
+
     }
-};
 
 
     useEffect(() => {
@@ -77,13 +73,19 @@ const handlePay = async (order) => {
                         </p>
 
                         {/* Change the Pay Now button logic */}
-                      
-                            <Link to={`/dashboard/payment/${order._id}`} state={{ order }}>
+
+                        {/* <Link to={`/dashboard/payment/${order._id}`} state={{ order }}>
                                 <button className="w-full bg-green-600 text-white py-2 rounded hover:bg-green-700">
                                     Pay Now
                                 </button>
-                            </Link>
-                         
+                            </Link> */}
+                        <button
+                            onClick={() => handlePayment(order)}
+                            className="w-full bg-green-600 text-white py-2 rounded hover:bg-green-700">
+                            Pay Now
+                        </button>
+
+
                     </div>
 
 

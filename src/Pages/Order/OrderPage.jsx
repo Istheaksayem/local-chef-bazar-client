@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 import { useParams } from "react-router";
 
 const OrderPage = () => {
-    const { id } = useParams(); // mealId
+    const { id } = useParams(); 
     const { user } = useAuth();
 
     const [meal, setMeal] = useState(null);
@@ -14,7 +14,7 @@ const OrderPage = () => {
     const [address, setAddress] = useState("");
 
     useEffect(() => {
-        fetch(`http://localhost:5000/meals/${id}`)
+        fetch(`http://localhost:5000/meals-details/${id}`)
             .then(res => res.json())
             .then(data => setMeal(data));
     }, [id]);
