@@ -1,9 +1,11 @@
 import React from 'react';
 import useAuth from '../../../Hooks/useAuth';
 import { toast } from 'react-toastify';
+import useRole from '../../../Hooks/useRole/useRole';
 
 const MyProfile = () => {
     const { user } = useAuth()
+    const {role} =useRole(user?.email)
     const handleRoleRequest = async (type) => {
         const requestData = {
             userName: user.displayName,
@@ -44,7 +46,7 @@ const MyProfile = () => {
                 <div className="mt-5 space-y-3 w-full">
 
                     {/* Hide Be a Chef if already chef */}
-                    {user.role !== "chef" && user.role !== "admin" && (
+                    {role === "user" && (
                         <button
                             onClick={() => handleRoleRequest("chef")}
                             className="btn btn-primary w-full"
@@ -53,7 +55,8 @@ const MyProfile = () => {
                         </button>
                     )}
 
-                    {/* Hide both buttons if admin */}
+
+                    {/* Hide both buttons if admin
                     {user.role !== "admin" && (
                         <button
                             onClick={() => handleRoleRequest("admin")}
@@ -61,7 +64,7 @@ const MyProfile = () => {
                         >
                             Be an Admin
                         </button>
-                    )}
+                    )} */}
                 </div>
             </div>
         </div>
@@ -69,3 +72,15 @@ const MyProfile = () => {
 };
 
 export default MyProfile;
+
+{/* Hide Be a Chef if already chef */ }
+// {
+//     user.role !== "chef" && user.role !== "admin" && (
+//         <button
+//             onClick={() => handleRoleRequest("chef")}
+//             className="btn btn-primary w-full"
+//         >
+//             Be a Chef
+//         </button>
+//     )
+// }
