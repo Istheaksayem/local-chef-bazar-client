@@ -22,6 +22,7 @@ import UpdateMeal from "../Pages/Dashboard/UpdateMeal/UpdateMeal";
 import Payment from "../Pages/Dashboard/Payment/Payment";
 import PaymentCancel from "../Pages/Dashboard/paymentCancel/PaymentCancel";
 import PaymentHistory from "../Pages/Dashboard/PaymentHistory/PaymentHistory";
+import ErrorPage from "../ErrorPage/ErrorPage";
 
 
 export const router = createBrowserRouter([
@@ -57,6 +58,10 @@ export const router = createBrowserRouter([
       {
         path: '/reviews/home',
         Component: CustomerReviews
+      },
+      {
+        path:"*",
+        Component:ErrorPage
       }
 
     ]
