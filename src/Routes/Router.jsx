@@ -24,6 +24,7 @@ import PaymentCancel from "../Pages/Dashboard/paymentCancel/PaymentCancel";
 import PaymentHistory from "../Pages/Dashboard/PaymentHistory/PaymentHistory";
 import ErrorPage from "../ErrorPage/ErrorPage";
 import ManageUsers from "../Pages/Dashboard/admin/ManageUser/ManageUser";
+import ManageRequests from "../Pages/Dashboard/admin/ManageRequest/ManageRequests";
 
 
 export const router = createBrowserRouter([
@@ -119,6 +120,10 @@ export const router = createBrowserRouter([
       {
         path:"manage-users",
         Component:ManageUsers
+      },
+      {
+        path:"manage-request",
+        Component:ManageRequests
       }
     
 

@@ -159,8 +159,18 @@ const DashboardLayout = () => {
                 className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="MyMeals"
 
                 to="/dashboard/manage-users">
-                <IoRestaurant />
+                
                 <span className="is-drawer-close:hidden">ManageUsers</span>
+
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="MyMeals"
+
+                to="/dashboard/manage-request">
+                
+                <span className="is-drawer-close:hidden">ManageRequest</span>
 
               </NavLink>
             </li>
