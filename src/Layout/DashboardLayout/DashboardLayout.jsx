@@ -107,7 +107,7 @@ const DashboardLayout = () => {
 
             {role === "chef" && (
               <>
-{/*                
+                {/*                
                 <li>
                   <NavLink
                     className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="MyProfile"
@@ -152,6 +152,18 @@ const DashboardLayout = () => {
 
             )}
 
+            {/* admin */}
+
+            <li>
+              <NavLink
+                className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="MyMeals"
+
+                to="/dashboard/manage-users">
+                <IoRestaurant />
+                <span className="is-drawer-close:hidden">ManageUsers</span>
+
+              </NavLink>
+            </li>
 
             {/* List item */}
             <li>

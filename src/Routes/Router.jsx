@@ -23,6 +23,7 @@ import Payment from "../Pages/Dashboard/Payment/Payment";
 import PaymentCancel from "../Pages/Dashboard/paymentCancel/PaymentCancel";
 import PaymentHistory from "../Pages/Dashboard/PaymentHistory/PaymentHistory";
 import ErrorPage from "../ErrorPage/ErrorPage";
+import ManageUsers from "../Pages/Dashboard/admin/ManageUser/ManageUser";
 
 
 export const router = createBrowserRouter([
@@ -115,6 +116,10 @@ export const router = createBrowserRouter([
         path:'update-meal/:id',
         Component:UpdateMeal
       },
+      {
+        path:"manage-users",
+        Component:ManageUsers
+      }
     
 
 

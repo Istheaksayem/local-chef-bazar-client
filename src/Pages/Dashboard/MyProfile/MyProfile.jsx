@@ -56,7 +56,6 @@ const MyProfile = () => {
                     )}
 
 
-                    {/* Hide both buttons if admin
                     {user.role !== "admin" && (
                         <button
                             onClick={() => handleRoleRequest("admin")}
@@ -64,7 +63,7 @@ const MyProfile = () => {
                         >
                             Be an Admin
                         </button>
-                    )} */}
+                    )} 
                 </div>
             </div>
         </div>

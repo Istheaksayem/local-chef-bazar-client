@@ -47,7 +47,7 @@ const CreateMeal = () => {
         estimatedDeliveryTime: data.estimatedDeliveryTime,
         chefExperience: data.chefExperience,
         chefId: data.chefId,
-        userEmail: user.email,
+        chefEmail: user.email,
         createdAt: new Date(),
       };
 
@@ -57,6 +57,13 @@ const CreateMeal = () => {
         headers: { "content-type": "application/json" },
         body: JSON.stringify(mealData),
       });
+
+      //  Fraud chef case
+      if (res.status === 403) {
+        const err = await res.json();
+        toast.error(err.message || "You are blocked");
+        return;
+      }
 
       const result = await res.json();
 
