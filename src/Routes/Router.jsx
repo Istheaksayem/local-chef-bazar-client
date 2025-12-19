@@ -25,6 +25,7 @@ import PaymentHistory from "../Pages/Dashboard/PaymentHistory/PaymentHistory";
 import ErrorPage from "../ErrorPage/ErrorPage";
 import ManageUsers from "../Pages/Dashboard/admin/ManageUser/ManageUser";
 import ManageRequests from "../Pages/Dashboard/admin/ManageRequest/ManageRequests";
+import PlatformStatistics from "../Pages/Dashboard/admin/PlatformStatistics/PlatformStatistics";
 
 
 export const router = createBrowserRouter([
@@ -124,6 +125,10 @@ export const router = createBrowserRouter([
       {
         path:"manage-request",
         Component:ManageRequests
+      },
+      {
+        path:"platform-statistics",
+        Component:PlatformStatistics
       }
     
 

@@ -1,9 +1,9 @@
 import React from 'react';
 import { CgProfile } from 'react-icons/cg';
 import { Link, NavLink, Outlet } from 'react-router';
-import { FaHistory, FaStar, FaUtensils } from "react-icons/fa"
+import { FaHistory, FaHouseUser, FaStar, FaUtensils } from "react-icons/fa"
 import { FiShoppingBag } from "react-icons/fi";
-import { CiHeart } from "react-icons/ci";
+import { CiHeart, CiUser } from "react-icons/ci";
 import { IoRestaurant } from "react-icons/io5";
 import { MdOutlinePendingActions } from "react-icons/md";
 
@@ -154,26 +154,42 @@ const DashboardLayout = () => {
 
             {/* admin */}
 
-            <li>
-              <NavLink
-                className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="MyMeals"
+            {role === "admin" && (
+              <>
+                <li>
+                  <NavLink
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    data-tip="ManageUsers"
+                    to="/dashboard/manage-users"
+                  >
+                    <FaHouseUser />
+                    <span className="is-drawer-close:hidden">ManageUsers</span>
+                  </NavLink>
+                </li>
 
-                to="/dashboard/manage-users">
-                
-                <span className="is-drawer-close:hidden">ManageUsers</span>
+                <li>
+                  <NavLink
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    data-tip="ManageRequest"
+                    to="/dashboard/manage-request"
+                  >
+                    <CiUser />
+                    <span className="is-drawer-close:hidden">ManageRequest</span>
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    data-tip="PlatformStatistics"
+                    to="/dashboard/platform-statistics"
+                  >
+                    <CiUser />
+                    <span className="is-drawer-close:hidden">Platform Statistics</span>
+                  </NavLink>
+                </li>
+              </>
+            )}
 
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="MyMeals"
-
-                to="/dashboard/manage-request">
-                
-                <span className="is-drawer-close:hidden">ManageRequest</span>
-
-              </NavLink>
-            </li>
 
             {/* List item */}
             <li>
