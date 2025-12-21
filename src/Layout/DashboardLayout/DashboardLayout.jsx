@@ -6,6 +6,8 @@ import { FiShoppingBag } from "react-icons/fi";
 import { CiHeart, CiUser } from "react-icons/ci";
 import { IoRestaurant } from "react-icons/io5";
 import { MdOutlinePendingActions } from "react-icons/md";
+import { LuUserCog } from "react-icons/lu";
+
 
 import useAuth from '../../Hooks/useAuth';
 import useRole from '../../Hooks/useRole/useRole';
@@ -141,7 +143,7 @@ const DashboardLayout = () => {
                   <NavLink
                     className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="OrderRequest"
 
-                    to="/dashboard/order-request">
+                    to="/dashboard/chef-order-request">
                     <MdOutlinePendingActions />
 
                     <span className="is-drawer-close:hidden">Order requests</span>
@@ -183,7 +185,8 @@ const DashboardLayout = () => {
                     data-tip="PlatformStatistics"
                     to="/dashboard/platform-statistics"
                   >
-                    <CiUser />
+                    <LuUserCog />
+
                     <span className="is-drawer-close:hidden">Platform Statistics</span>
                   </NavLink>
                 </li>

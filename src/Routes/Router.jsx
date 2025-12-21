@@ -27,6 +27,8 @@ import ManageUsers from "../Pages/Dashboard/admin/ManageUser/ManageUser";
 import ManageRequests from "../Pages/Dashboard/admin/ManageRequest/ManageRequests";
 import PlatformStatistics from "../Pages/Dashboard/admin/PlatformStatistics/PlatformStatistics";
 
+import ChefOrderRequests from "../Pages/Dashboard/OrderRequest/ChefOrderRequest";
+
 
 export const router = createBrowserRouter([
   {
@@ -111,6 +113,10 @@ export const router = createBrowserRouter([
         Component:CreateMeal
       },
       {
+        path:"chef-order-request",
+        Component:ChefOrderRequests
+      },
+      {
         path:'my-meals',
         Component:MyMeals
       },
@@ -118,6 +124,7 @@ export const router = createBrowserRouter([
         path:'update-meal/:id',
         Component:UpdateMeal
       },
+      // admin
       {
         path:"manage-users",
         Component:ManageUsers
