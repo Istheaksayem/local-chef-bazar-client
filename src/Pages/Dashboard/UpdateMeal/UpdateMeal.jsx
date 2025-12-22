@@ -10,7 +10,7 @@ const UpdateMeal = () => {
 
   // load meal
   useEffect(() => {
-    fetch(`http://localhost:5000/meals/${id}`)
+    fetch(`http://localhost:5000/meals-details/${id}`)
       .then(res => res.json())
       .then(data => setMeal(data));
   }, [id]);

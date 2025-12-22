@@ -24,16 +24,16 @@ const ChefOrderRequests = () => {
   }, [user]);
   console.log(chefId)
    useEffect(() => {
-    if (!chefId) return;
+    if (!user.email) return;
    
 
-    fetch(`http://localhost:5000/chef-orders/${chefId}`)
+    fetch(`http://localhost:5000/chef-orders/${user.email}`)
       .then(res => res.json())
       .then(data => {
         setOrders(data);
         setLoading(false);
       });
-  }, [chefId]);
+  }, [user]);
 
   //  Update order status
   const handleStatusChange = (orderId, status) => {

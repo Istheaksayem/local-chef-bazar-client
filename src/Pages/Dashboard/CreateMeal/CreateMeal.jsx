@@ -130,11 +130,11 @@ const CreateMeal = () => {
           className="input input-bordered w-full"
         />
 
-        <input
+        {/* <input
           {...register("chefId", { required: true })}
           placeholder="Chef ID"
           className="input input-bordered w-full"
-        />
+        /> */}
 
         {/* Read-only email */}
         <input

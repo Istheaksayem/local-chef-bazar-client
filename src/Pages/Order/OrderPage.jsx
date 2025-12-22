@@ -19,7 +19,7 @@ const OrderPage = () => {
             .then(res => res.json())
             .then(data => setMeal(data));
     }, [id]);
-
+console.log(meal)
     if (!meal) {
         return <p className="text-center mt-10 text-xl">Loading Order Details...</p>;
     }
@@ -44,7 +44,7 @@ const OrderPage = () => {
                     mealName: meal.foodName,
                     price: meal.price,
                     quantity: quantity,
-                    chefId: meal.chefId,
+                    chefEmail: meal.chefEmail,
                     paymentStatus: "Pending",
                     userEmail: user.email,
                     userAddress: address,
