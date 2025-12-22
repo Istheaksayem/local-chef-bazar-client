@@ -10,7 +10,7 @@ const UpdateMeal = () => {
 
   // load meal
   useEffect(() => {
-    fetch(`http://localhost:5000/meals-details/${id}`)
+    fetch(`https://local-chef-bazar-server-theta.vercel.app/meals-details/${id}`)
       .then(res => res.json())
       .then(data => setMeal(data));
   }, [id]);
@@ -26,7 +26,7 @@ const UpdateMeal = () => {
       ingredients: form.ingredients.value.split(","),
     };
 
-    fetch(`http://localhost:5000/meals/${id}`, {
+    fetch(`https://local-chef-bazar-server-theta.vercel.app/meals/${id}`, {
       method: "PUT",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(updatedMeal)

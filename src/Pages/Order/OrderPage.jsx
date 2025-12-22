@@ -15,7 +15,7 @@ const OrderPage = () => {
     const [address, setAddress] = useState("");
 
     useEffect(() => {
-        fetch(`http://localhost:5000/meals-details/${id}`)
+        fetch(`https://local-chef-bazar-server-theta.vercel.app/meals-details/${id}`)
             .then(res => res.json())
             .then(data => setMeal(data));
     }, [id]);
@@ -52,7 +52,7 @@ console.log(meal)
                     orderTime: new Date().toISOString(),
                 };
 
-                fetch("http://localhost:5000/orders", {
+                fetch("https://local-chef-bazar-server-theta.vercel.app/orders", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(orderData)

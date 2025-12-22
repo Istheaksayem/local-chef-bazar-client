@@ -8,7 +8,7 @@ const PlatformStatistics = () => {
   const [stats, setStats] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:5000/admin/platform-stats")
+    fetch("https://local-chef-bazar-server-theta.vercel.app/admin/platform-stats")
       .then(res => res.json())
       .then(data => setStats(data));
   }, []);

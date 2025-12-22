@@ -13,7 +13,7 @@ const FavoriteMeals = () => {
   useEffect(() => {
     if (!user) return;
 
-    fetch(`http://localhost:5000/favorites/${user.email}`)
+    fetch(`https://local-chef-bazar-server-theta.vercel.app/favorites/${user.email}`)
       .then(res => res.json())
       .then(data => {
         setFavorites(data);
@@ -25,7 +25,7 @@ const FavoriteMeals = () => {
   const handleDelete = (id) => {
     if (!window.confirm("Remove this meal from favorites?")) return;
 
-    fetch(`http://localhost:5000/favorites/${id}`, {
+    fetch(`https://local-chef-bazar-server-theta.vercel.app/favorites/${id}`, {
       method: "DELETE"
     })
       .then(res => res.json())

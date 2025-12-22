@@ -4,7 +4,7 @@ const CustomerReviews = () => {
     const [reviews, setReviews] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:5000/reviews/home?limit=3")
+        fetch("https://local-chef-bazar-server-theta.vercel.app/reviews/home?limit=3")
             .then(res => res.json())
             .then(data => setReviews(data));
     }, []);

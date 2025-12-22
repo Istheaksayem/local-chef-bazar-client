@@ -16,7 +16,7 @@ const Register = () => {
 
     // backend e user save
     const saveUserToDB = async (user) => {
-        await fetch("http://localhost:5000/users", {
+        await fetch("https://local-chef-bazar-server-theta.vercel.app/users", {
             method: "POST",
             headers: {
                 "content-type": "application/json"

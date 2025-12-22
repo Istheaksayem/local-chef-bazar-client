@@ -14,7 +14,7 @@ const MyReviews = () => {
     useEffect(() => {
         if (!user?.email) return;
 
-        fetch(`http://localhost:5000/reviews/user/${user.email}`)
+        fetch(`https://local-chef-bazar-server-theta.vercel.app/reviews/user/${user.email}`)
             .then(res => res.json())
             .then(data => {
                 setReviews(data);
@@ -30,7 +30,7 @@ const MyReviews = () => {
     const handleDelete = (id) => {
         if (!window.confirm("Are you sure you want to delete this review?")) return;
 
-        fetch(`http://localhost:5000/reviews/${id}`, {
+        fetch(`https://local-chef-bazar-server-theta.vercel.app/reviews/${id}`, {
             method: "DELETE"
         })
             .then(res => res.json())
@@ -54,7 +54,7 @@ const MyReviews = () => {
             comment: e.target.comment.value
         };
 
-        fetch(`http://localhost:5000/reviews/${selectedReview._id}`, {
+        fetch(`https://local-chef-bazar-server-theta.vercel.app/reviews/${selectedReview._id}`, {
             method: "PATCH",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(updatedData)

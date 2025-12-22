@@ -15,7 +15,7 @@ const Meals = () => {
 
   // Fetch all meals
   useEffect(() => {
-    fetch("http://localhost:5000/meals/all")
+    fetch("https://local-chef-bazar-server-theta.vercel.app/meals/all")
       .then(res => res.json())
       .then(data => setMeals(data));
   }, []);

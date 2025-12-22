@@ -11,7 +11,7 @@ const ManageRequests = () => {
   // fetch all requests
   const fetchRequests = async () => {
     try {
-      const res = await fetch("http://localhost:5000/request-role");
+      const res = await fetch("https://local-chef-bazar-server-theta.vercel.app/request-role");
       const data = await res.json();
       setRequests(data);
       setLoading(false);
@@ -29,7 +29,7 @@ const ManageRequests = () => {
   const handleApprove = async (id, email) => {
     try {
       const res = await fetch(
-        `http://localhost:5000/request-role/approve/${id}`,
+        `https://local-chef-bazar-server-theta.vercel.app/request-role/approve/${id}`,
         {
           method: "PATCH",
           headers: {
@@ -53,7 +53,7 @@ const ManageRequests = () => {
   const handleReject = async (id) => {
     try {
       const res = await fetch(
-        `http://localhost:5000/request-role/reject/${id}`,
+        `https://local-chef-bazar-server-theta.vercel.app/request-role/reject/${id}`,
         {
           method: "PATCH",
         }

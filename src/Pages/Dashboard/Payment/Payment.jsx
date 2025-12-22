@@ -9,7 +9,7 @@ const Payment = () => {
   const { data: order = {}, isLoading } = useQuery({
     queryKey: ['order', id],
     queryFn: async () => {
-      const res = await fetch(`http://localhost:5000/order/${id}`)
+      const res = await fetch(`https://local-chef-bazar-server-theta.vercel.app/order/${id}`)
       return res.json();
     }
   })
@@ -19,7 +19,7 @@ const Payment = () => {
         price:order.price,
 
     }
-    const res =await fetch('http://localhost:5000/create-checkout-session',{
+    const res =await fetch('https://local-chef-bazar-server-theta.vercel.app/create-checkout-session',{
         method:'POST',
         headers:{
              'Content-Type': 'application/json',

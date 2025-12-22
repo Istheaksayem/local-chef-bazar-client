@@ -6,13 +6,13 @@ const ManageUsers = () => {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/users")
+    fetch("https://local-chef-bazar-server-theta.vercel.app/users")
       .then(res => res.json())
       .then(data => setUsers(data));
   }, []);
 
   const handleMakeFraud = (id) => {
-    fetch(`http://localhost:5000/users/fraud/${id}`, {
+    fetch(`https://local-chef-bazar-server-theta.vercel.app/users/fraud/${id}`, {
       method: "PATCH"
     })
       .then(res => res.json())

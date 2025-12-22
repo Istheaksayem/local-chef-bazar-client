@@ -14,7 +14,7 @@ const MyProfile = () => {
             requestType: type,
         };
 
-        const res = await fetch("http://localhost:5000/request-role", {
+        const res = await fetch("https://local-chef-bazar-server-theta.vercel.app/request-role", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(requestData),

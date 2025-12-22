@@ -13,7 +13,7 @@ const MyMeals = () => {
   useEffect(() => {
     if (!user?.email) return;
 
-    fetch(`http://localhost:5000/meals?email=${user.email}`)
+    fetch(`https://local-chef-bazar-server-theta.vercel.app/meals?email=${user.email}`)
       .then(res => res.json())
       .then(data => setMeals(data));
   }, [user]);
@@ -23,7 +23,7 @@ const MyMeals = () => {
     const confirm = window.confirm("Are you sure you want to delete this meal?");
     if (!confirm) return;
 
-    fetch(`http://localhost:5000/meals/${id}`, {
+    fetch(`https://local-chef-bazar-server-theta.vercel.app/meals/${id}`, {
       method: "DELETE"
     })
       .then(res => res.json())

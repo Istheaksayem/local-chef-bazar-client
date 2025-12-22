@@ -10,7 +10,7 @@ const PaymentSuccess = () => {
 
     useEffect(() => {
         if (sessionId) {
-            fetch("http://localhost:5000/payment-success", {
+            fetch("https://local-chef-bazar-server-theta.vercel.app/payment-success", {
                 method: "PATCH",
                 headers: {
                     "Content-Type": "application/json",

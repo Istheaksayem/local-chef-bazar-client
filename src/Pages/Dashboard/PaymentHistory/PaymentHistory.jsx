@@ -8,7 +8,7 @@ const PaymentHistory = () => {
 
     useEffect(() => {
         if (user?.email) {
-            fetch(`http://localhost:5000/payments/${user.email}`)
+            fetch(`https://local-chef-bazar-server-theta.vercel.app/payments/${user.email}`)
                 .then(res => res.json())
                 .then(data => setPayments(data));
         }

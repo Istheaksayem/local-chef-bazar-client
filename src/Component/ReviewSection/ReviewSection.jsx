@@ -16,7 +16,7 @@ const ReviewSection = () => {
     
 
     useEffect(() => {
-        fetch(`http://localhost:5000/reviews/${id}`)
+        fetch(`https://local-chef-bazar-server-theta.vercel.app/reviews/${id}`)
             .then(res => res.json())
             .then(data => setReviews(data));
     }, [id]);
@@ -33,7 +33,7 @@ const ReviewSection = () => {
             userEmail:user.email
         };
         console.log(review)
-        const res = await fetch("http://localhost:5000/reviews", {
+        const res = await fetch("https://local-chef-bazar-server-theta.vercel.app/reviews", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(review)

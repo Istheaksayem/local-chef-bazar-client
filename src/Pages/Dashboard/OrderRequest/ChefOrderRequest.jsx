@@ -13,7 +13,7 @@ const ChefOrderRequests = () => {
   // 🔹 Fetch orders for logged-in chef
   useEffect(() => {
     if (!user) return;
-    fetch(`http://localhost:5000/users/${user.email}`)
+    fetch(`https://local-chef-bazar-server-theta.vercel.app/users/${user.email}`)
       .then(res => res.json())
       .then(data => {
        setChefId(data.chefId);
@@ -27,7 +27,7 @@ const ChefOrderRequests = () => {
     if (!user.email) return;
    
 
-    fetch(`http://localhost:5000/chef-orders/${user.email}`)
+    fetch(`https://local-chef-bazar-server-theta.vercel.app/chef-orders/${user.email}`)
       .then(res => res.json())
       .then(data => {
         setOrders(data);
@@ -37,7 +37,7 @@ const ChefOrderRequests = () => {
 
   //  Update order status
   const handleStatusChange = (orderId, status) => {
-    fetch(`http://localhost:5000/orders/${orderId}`, {
+    fetch(`https://local-chef-bazar-server-theta.vercel.app/orders/${orderId}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ status })

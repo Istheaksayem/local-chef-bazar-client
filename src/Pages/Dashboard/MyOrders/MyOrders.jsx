@@ -17,7 +17,7 @@ const MyOrders = () => {
             orderName: order.mealName,
             userEmail: user.email
         }
-        const res = await fetch('http://localhost:5000/payment-checkout-session', {
+        const res = await fetch('https://local-chef-bazar-server-theta.vercel.app/payment-checkout-session', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -36,7 +36,7 @@ const MyOrders = () => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/orders/${user.email}`)
+        fetch(`https://local-chef-bazar-server-theta.vercel.app/orders/${user.email}`)
             .then(res => res.json())
             .then(data => setOrders(data));
     }, [user.email]);
