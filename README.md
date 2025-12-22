@@ -65,7 +65,7 @@ The purpose of this project is to build a modern role-based food marketplace pla
 
 ### Frontend
 - React.js
-- React Router DOM
+- React Router 
 - Tailwind CSS
 - Framer Motion
 - React Hook Form
@@ -78,7 +78,7 @@ The purpose of this project is to build a modern role-based food marketplace pla
 - Node.js
 - Express.js
 - MongoDB
-- JWT
+  
 - Stripe
 - CORS
 - dotenv
