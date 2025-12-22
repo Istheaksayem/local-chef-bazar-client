@@ -1,16 +1,90 @@
-# React + Vite
+# 🍽️ LocalChefBazaar — Marketplace for Local Home-Cooked Meals
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+LocalChefBazaar is a full-stack MERN application that connects local home chefs with customers who are looking for fresh, affordable, and homemade meals. Users can browse meals, place orders, track delivery, and leave reviews, while chefs can manage their menus and orders. Admins control the overall platform.
 
-Currently, two official plugins are available:
+🔗 **Live Site:** https://storied-pony-5556cc.netlify.app
+🔗 **Client Repo:** https://github.com/Istheaksayem/local-chef-bazar-client 
+🔗 **Server Repo:** https://github.com/Istheaksayem/local-chef-bazar-server 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 🎯 Purpose
+The purpose of this project is to build a modern role-based food marketplace platform using the MERN stack, demonstrating authentication, authorization, CRUD operations, payments, dashboards, and real-world application features.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🚀 Key Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### 👥 User Roles
+- **Admin**: Manage users, requests, and platform statistics  
+- **Chef**: Create meals, manage orders, update meal info  
+- **User**: Browse meals, place orders, review, and favorite meals  
+
+### 🔐 Authentication & Security
+- Firebase Authentication (Email & Password)
+- JWT-based secure API access
+- httpOnly cookies for token storage
+- Environment variables for Firebase & MongoDB credentials
+
+### 🏠 Public Pages
+- Home with animated banner (Framer Motion)
+- Daily meals (dynamic)
+- Customer reviews
+- Meals page with sorting & pagination
+- Login & Register
+
+### 📄 Private Pages
+- Meal Details with reviews & favorites
+- Order & payment (Stripe)
+- Dashboard (role-based)
+- Profile management
+
+### 📊 Dashboards
+- **User Dashboard**: Orders, reviews, favorites, profile  
+- **Chef Dashboard**: Create meals, manage meals & orders  
+- **Admin Dashboard**: Manage users, requests, statistics  
+
+### 💳 Payment
+- Stripe payment integration
+- Payment history saved in MongoDB
+- Order payment status update
+
+### ⭐ Extra Functionalities
+- Review system with update & delete
+- Favorite meals system
+- Fraud user control
+- Search & pagination
+- Dynamic route titles
+- Responsive design
+- Loading & error pages
+- Dark/Light theme (optional)
+
+---
+
+## 🧰 Tech Stack
+
+### Frontend
+- React.js
+- React Router DOM
+- Tailwind CSS
+- Framer Motion
+- React Hook Form
+- Axios
+- Firebase Auth
+- SweetAlert2 / React Toastify
+- Recharts
+
+### Backend
+- Node.js
+- Express.js
+- MongoDB
+- JWT
+- Stripe
+- CORS
+- dotenv
+
+---
+
+## 📦 NPM Packages Used
+
+### Client
