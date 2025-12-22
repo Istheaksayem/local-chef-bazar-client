@@ -86,5 +86,20 @@ The purpose of this project is to build a modern role-based food marketplace pla
 ---
 
 ## 📦 NPM Packages Used
-
-### Client
+ react-stripe-js": "^5.4.1",
+    
+    tailwindcss
+    tanstack/react-query
+    axios
+    firebase 
+    framer-motion
+    react
+    react-router
+    react-helmet-async
+    react-hook-form
+    react-icons
+    
+    react-toastify
+    recharts
+    stripe
+    sweetalert2
