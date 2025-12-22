@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router";
 import ReviewSection from "../../Component/ReviewSection/ReviewSection";
 import useAuth from "../../Hooks/useAuth";
 import { toast } from "react-toastify";
+import { Helmet } from "react-helmet-async";
 
 const MealDetails = () => {
   const { id } = useParams();
@@ -60,6 +61,7 @@ const MealDetails = () => {
 
   return (
     <div className="container mx-auto p-6">
+      <Helmet><title>MealsDetails |  local chef bazar</title></Helmet>
       <div className="grid md:grid-cols-2 gap-10 items-center">
         
         {/* Image */}

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import useAuth from "../../Hooks/useAuth";
 import Swal from "sweetalert2";
 import { useParams } from "react-router";
+import { Helmet } from "react-helmet-async";
 
 const OrderPage = () => {
     const { id } = useParams(); 
@@ -68,6 +69,7 @@ const OrderPage = () => {
 
     return (
         <div className="max-w-lg mx-auto mt-10 p-6 shadow-lg rounded-lg border">
+            <Helmet><title>OrderPage | local chef bazar</title></Helmet>
             <h2 className="text-3xl font-bold mb-4 text-center">Confirm Your Order</h2>
 
             <div className="space-y-3">

@@ -1,10 +1,12 @@
 import React from "react";
+import { Helmet } from "react-helmet-async";
 import { Link } from "react-router";
 
 
 const ErrorPage = () => {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-base-200 text-center px-4">
+      <Helmet><title>ErrorPage | local chef Bazar</title></Helmet>
       
       {/* Image */}
       <img

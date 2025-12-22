@@ -2,6 +2,7 @@ import React from 'react';
 import useAuth from '../../../Hooks/useAuth';
 import { toast } from 'react-toastify';
 import useRole from '../../../Hooks/useRole/useRole';
+import { Helmet } from 'react-helmet-async';
 
 const MyProfile = () => {
     const { user } = useAuth()
@@ -28,6 +29,7 @@ const MyProfile = () => {
     };
     return (
         <div className="max-w-md mx-auto bg-white p-6 rounded-xl shadow-lg mt-10">
+            <Helmet><title>MyProfile | local chef Bazar</title></Helmet>
             <div className="flex flex-col items-center text-center">
                 <img
                     src={user.photoURL}

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 
 import { Link } from "react-router";
 import useAuth from "../../../Hooks/useAuth";
+import { Helmet } from "react-helmet-async";
 
 
 const MyOrders = () => {
@@ -42,6 +43,7 @@ const MyOrders = () => {
 
     return (
         <div className="max-w-4xl mx-auto mt-10 px-4">
+            <Helmet><title>MyOrder | local chef Bazar</title></Helmet>
             <h2 className="text-3xl font-bold mb-5">My Orders</h2>
 
             {orders.length === 0 && (

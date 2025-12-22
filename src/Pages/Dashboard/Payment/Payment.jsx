@@ -1,6 +1,7 @@
 import React from 'react';
 import { useQuery } from '@tanstack/react-query'
 import { useParams } from 'react-router';
+import { Helmet } from 'react-helmet-async';
 
 const Payment = () => {
   const { id } = useParams();
@@ -38,6 +39,7 @@ const Payment = () => {
 
   return (
     <div>
+      <Helmet><title>Payment | local chef Bazar</title></Helmet>
       <h2>Please Payment for ${order.price} : {order?.mealName}</h2>
       <button
       onClick={handlePayment}

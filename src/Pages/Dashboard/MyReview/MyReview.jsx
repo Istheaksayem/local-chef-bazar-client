@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import useAuth from "../../../Hooks/useAuth";
+import { Helmet } from "react-helmet-async";
 
 const MyReviews = () => {
     const { user } = useAuth();
@@ -77,6 +78,7 @@ const MyReviews = () => {
 
     return (
         <div className="p-6">
+             <Helmet><title>MyReview | local chef Bazar</title></Helmet>
             <h2 className="text-3xl font-bold mb-6 text-center">My Reviews</h2>
 
             {reviews.length === 0 ? (

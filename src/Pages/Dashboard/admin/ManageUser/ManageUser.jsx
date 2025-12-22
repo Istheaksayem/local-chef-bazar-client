@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
 
 const ManageUsers = () => {
@@ -25,6 +26,7 @@ const ManageUsers = () => {
 
   return (
     <div className="p-6">
+       <Helmet><title>ManageUser | local chef Bazar</title></Helmet>
       <h2 className="text-2xl mb-4">Manage Users</h2>
 
       <table className="table">

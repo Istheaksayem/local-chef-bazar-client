@@ -11,6 +11,7 @@ import { LuUserCog } from "react-icons/lu";
 
 import useAuth from '../../Hooks/useAuth';
 import useRole from '../../Hooks/useRole/useRole';
+import { Helmet } from 'react-helmet-async';
 
 
 const DashboardLayout = () => {
@@ -19,6 +20,7 @@ const DashboardLayout = () => {
 
   return (
     <div className="drawer lg:drawer-open">
+        <Helmet><title>Dashboard | Local chef Bazar</title></Helmet>
       <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content">
         {/* Navbar */}

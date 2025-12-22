@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import { toast } from "react-toastify";
 import useAuth from "../../../Hooks/useAuth";
+import { Helmet } from "react-helmet-async";
 
 const ChefOrderRequests = () => {
   const { user } = useAuth();
@@ -62,6 +63,7 @@ const ChefOrderRequests = () => {
 
   return (
     <div className="p-6">
+       <Helmet><title>ChefRequest | local chef Bazar</title></Helmet>
       <h2 className="text-3xl font-bold mb-6"> Order Requests</h2>
 
       {orders.length === 0 ? (

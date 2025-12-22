@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import useAuth from "../../../Hooks/useAuth";
 import { useNavigate } from "react-router";
+import { Helmet } from "react-helmet-async";
 
 const MyMeals = () => {
   const { user } = useAuth();
@@ -41,6 +42,7 @@ const MyMeals = () => {
 
   return (
     <div className="p-6">
+       <Helmet><title>MyMeals | local chef Bazar</title></Helmet>
       <h2 className="text-2xl font-bold mb-6">My Meals</h2>
 
       {meals.length === 0 && (

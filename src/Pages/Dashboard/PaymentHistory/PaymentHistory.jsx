@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import useAuth from "../../../Hooks/useAuth";
+import { Helmet } from "react-helmet-async";
 
 const PaymentHistory = () => {
     const { user } = useAuth();
@@ -15,6 +16,7 @@ const PaymentHistory = () => {
 
     return (
         <div className="p-6">
+             <Helmet><title>PaymentHistory | local chef Bazar</title></Helmet>
             <h2 className="text-3xl font-bold mb-6"> Payment History</h2>
 
             {payments.length === 0 ? (

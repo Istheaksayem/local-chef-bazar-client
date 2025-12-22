@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/set-state-in-effect */
 import React, { useEffect, useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { toast } from "react-toastify";
 
 const ManageRequests = () => {
@@ -74,6 +75,7 @@ const ManageRequests = () => {
 
   return (
     <div className="p-6">
+       <Helmet><title>ManageRequest | local chef Bazar</title></Helmet>
       <h2 className="text-2xl font-bold mb-6">Manage Role Requests</h2>
 
       <div className="overflow-x-auto">

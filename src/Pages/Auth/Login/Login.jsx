@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router';
 import useAuth from '../../../Hooks/useAuth';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
+import { Helmet } from 'react-helmet-async';
 
 const Login = () => {
      const { register, handleSubmit, formState: { errors } } = useForm();
@@ -23,6 +24,7 @@ const Login = () => {
     }
     return (
           <div className="card bg-base-100 w-full mx-auto max-w-sm shrink-0 shadow-2xl">
+            <Helmet><title>Login |local chef bazar</title></Helmet>
             <h3 className="text-3xl text-center font-bold">Welcome Back to local chef bazar</h3>
             <p className="font-semibold text-center">Login with chef bazar</p>
             <form onSubmit={handleSubmit(handleLogin)} className="card-body">

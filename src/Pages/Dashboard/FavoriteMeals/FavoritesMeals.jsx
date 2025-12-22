@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 import { toast } from "react-toastify";
 import useAuth from "../../../Hooks/useAuth";
+import { Helmet } from "react-helmet-async";
 
 const FavoriteMeals = () => {
   const { user } = useAuth();
@@ -42,6 +43,7 @@ const FavoriteMeals = () => {
 
   return (
     <div className="container mx-auto p-6">
+       <Helmet><title>FavoritesMeals | local chef Bazar</title></Helmet>
       <h2 className="text-3xl font-bold mb-6">My Favorite Meals</h2>
 
       {favorites.length === 0 ? (

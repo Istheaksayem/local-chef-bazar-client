@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import useAuth from "../../../Hooks/useAuth";
+import { Helmet } from "react-helmet-async";
 
 const CreateMeal = () => {
   const { user } = useAuth();
@@ -80,6 +81,7 @@ const CreateMeal = () => {
 
   return (
     <div className="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow">
+       <Helmet><title>CreateMeal | local chef Bazar</title></Helmet>
       <h2 className="text-2xl font-bold mb-4">Create Meal</h2>
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">

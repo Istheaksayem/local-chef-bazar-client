@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet-async";
 import {
   BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, PieChart, Pie, Cell
 } from "recharts";
@@ -29,6 +30,7 @@ const PlatformStatistics = () => {
 
   return (
     <div className="p-6 space-y-6">
+       <Helmet><title>Platform Statistics | local chef Bazar</title></Helmet>
       <h2 className="text-2xl font-bold">Platform Statistics</h2>
 
       {/* ===== Summary Cards ===== */}

@@ -108,6 +108,7 @@ export const router = createBrowserRouter([
         path:'my-favorites',
         Component:FavoritesMeals
       },
+      // chef
       {
         path:'create-meal',
         Component:CreateMeal

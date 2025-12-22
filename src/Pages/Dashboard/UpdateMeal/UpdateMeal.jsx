@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { useParams, useNavigate } from "react-router";
 import { toast } from "react-toastify";
 
@@ -43,6 +44,7 @@ const UpdateMeal = () => {
 
   return (
     <div className="max-w-xl mx-auto p-6 bg-white shadow rounded">
+       <Helmet><title>UpdateMeal | local chef Bazar</title></Helmet>
       <h2 className="text-xl font-bold mb-4">Update Meal</h2>
 
       <form onSubmit={handleUpdate} className="space-y-4">
