@@ -22,7 +22,7 @@ The purpose of this project is to build a modern role-based food marketplace pla
 
 ### 🔐 Authentication & Security
 - Firebase Authentication (Email & Password)
-- JWT-based secure API access
+
 - httpOnly cookies for token storage
 - Environment variables for Firebase & MongoDB credentials
 
