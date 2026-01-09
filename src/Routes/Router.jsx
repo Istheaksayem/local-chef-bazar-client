@@ -28,6 +28,8 @@ import ManageRequests from "../Pages/Dashboard/admin/ManageRequest/ManageRequest
 import PlatformStatistics from "../Pages/Dashboard/admin/PlatformStatistics/PlatformStatistics";
 
 import ChefOrderRequests from "../Pages/Dashboard/OrderRequest/ChefOrderRequest";
+import About from "../Pages/About/About";
+import Profile from "../Pages/Profile/Profile";
 
 
 export const router = createBrowserRouter([
@@ -63,6 +65,17 @@ export const router = createBrowserRouter([
       {
         path: '/reviews/home',
         Component: CustomerReviews
+      },
+      {
+        path:"about",
+        Component:About
+      },
+      {
+        path:"profile",
+        Component:Profile
+      },
+      {
+        path:"contact"
       },
       {
         path:"*",
