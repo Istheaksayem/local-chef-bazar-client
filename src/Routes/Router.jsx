@@ -30,6 +30,7 @@ import PlatformStatistics from "../Pages/Dashboard/admin/PlatformStatistics/Plat
 import ChefOrderRequests from "../Pages/Dashboard/OrderRequest/ChefOrderRequest";
 import About from "../Pages/About/About";
 import Profile from "../Pages/Profile/Profile";
+import Contact from "../Pages/Contact/Contact";
 
 
 export const router = createBrowserRouter([
@@ -75,7 +76,8 @@ export const router = createBrowserRouter([
         Component:Profile
       },
       {
-        path:"contact"
+        path:"contact",
+        Component:Contact
       },
       {
         path:"*",

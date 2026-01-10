@@ -1,6 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { FaBullseye, FaUsers, FaUtensils } from 'react-icons/fa';
+import { Link } from 'react-router';
 
 const About = () => {
   return (
@@ -10,14 +11,21 @@ const About = () => {
       </Helmet>
 
       {/* HERO SECTION */}
-      {/* <div className="bg-gradient-to-r from-indigo-500 to-purple-600 text-white py-20">
-        <div className="max-w-6xl mx-auto px-4 text-center">
-          <h1 className="text-4xl font-bold mb-4">About Our Platform</h1>
-          <p className="text-lg opacity-90">
-            Making meal management simple, smart, and accessible for everyone.
-          </p>
+      <div 
+        className="relative h-64 bg-cover bg-center flex items-center justify-center"
+        style={{ backgroundImage: "url('https://your-image-link.com/banner.jpg')", backgroundColor: '#00334e' }}
+      >
+        <div className="text-center text-white">
+          <h1 className="text-4xl font-bold uppercase tracking-wider">About Us</h1>
+          <Link to={"/"} className="mt-2 text-sm"> <span className="text-teal-400">Home</span></Link>
         </div>
-      </div> */}
+        {/* Wavy shape divider (Bottom) */}
+        <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
+          <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="relative block w-full h-16 fill-white">
+            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C58.47,105,119.46,108.45,178.47,102.53A610.27,610.27,0,0,0,321.39,56.44Z"></path>
+          </svg>
+        </div>
+      </div>
 
       {/* CONTENT SECTION */}
       <div className="max-w-6xl mx-auto px-4 py-16">

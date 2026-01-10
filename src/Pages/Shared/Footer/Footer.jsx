@@ -10,18 +10,67 @@ const Footer = () => {
         <div>
           <h3 className="text-xl font-semibold text-white mb-4">Contact Us</h3>
           <p>📍 Mirpur, Dhaka, Bangladesh</p>
-          <p>📞 +880 1234-567890</p>
-          <p>✉️ info@yourcompany.com</p>
+
+          <p>
+            📞{" "}
+            <a
+              href="tel:+8801234567890"
+              className="hover:text-white"
+            >
+              +880 1234-567890
+            </a>
+          </p>
+
+          <p>
+            ✉️{" "}
+            <a
+              href="mailto:info@yourcompany.com"
+              className="hover:text-white"
+            >
+              info@yourcompany.com
+            </a>
+          </p>
         </div>
 
         {/* Social Media */}
         <div>
           <h3 className="text-xl font-semibold text-white mb-4">Follow Us</h3>
           <div className="flex space-x-5 text-2xl">
-            <a href="#" className="hover:text-blue-500"><FaFacebook /></a>
-            <a href="#" className="hover:text-pink-500"><FaInstagram /></a>
-            <a href="#" className="hover:text-blue-400"><FaLinkedin /></a>
-            <a href="#" className="hover:text-red-500"><FaYoutube /></a>
+            <a
+              href="https://facebook.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-blue-500"
+            >
+              <FaFacebook />
+            </a>
+
+            <a
+              href="https://instagram.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-pink-500"
+            >
+              <FaInstagram />
+            </a>
+
+            <a
+              href="https://linkedin.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-blue-400"
+            >
+              <FaLinkedin />
+            </a>
+
+            <a
+              href="https://youtube.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-red-500"
+            >
+              <FaYoutube />
+            </a>
           </div>
         </div>
 
