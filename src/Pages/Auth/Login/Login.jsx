@@ -93,13 +93,13 @@ const Login = () => {
                     </div>
 
                     <div className="flex justify-end">
-                        <a className="text-sm text-orange-400 hover:underline">
+                        <a className="text-sm text-white hover:underline">
                             Forgot password?
                         </a>
                     </div>
 
                     {/* Login Button */}
-                    <button className="w-full py-3 rounded-xl font-semibold bg-gradient-to-r from-orange-500 to-pink-500 text-white hover:scale-[1.02] transition">
+                    <button className="w-full py-3 rounded-xl font-semibold bg-linear-to-r from-orange-500 to-pink-500 text-white hover:scale-[1.02] transition">
                         Login
                     </button>
 
