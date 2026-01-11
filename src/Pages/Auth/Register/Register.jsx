@@ -1,15 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react'; // useState add kora hoyeche
 import { useForm } from 'react-hook-form';
-
 import { toast } from 'react-toastify';
 import useAuth from '../../../Hooks/useAuth';
 import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+// import { Link, useNavigate } from 'react-router-dom'; 
+import { FaEye, FaEyeSlash } from 'react-icons/fa'; // Icons import
 import { Link, useNavigate } from 'react-router';
 
 const auth = getAuth();
 const googleProvider = new GoogleAuthProvider();
 
 const Register = () => {
+    // State for toggling password visibility
+    const [showPassword, setShowPassword] = useState(false);
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+    
     const {
         register,
         handleSubmit,
@@ -19,13 +24,10 @@ const Register = () => {
     const { registerUser, updateUserProfile, setUser } = useAuth();
     const navigate = useNavigate();
 
-    // backend e user save
     const saveUserToDB = async (user) => {
         await fetch("https://local-chef-bazar-server-theta.vercel.app/users", {
             method: "POST",
-            headers: {
-                "content-type": "application/json"
-            },
+            headers: { "content-type": "application/json" },
             body: JSON.stringify(user)
         });
     };
@@ -37,63 +39,47 @@ const Register = () => {
         }
 
         try {
-            // 1️ Firebase register
             await registerUser(data.email, data.password);
-
-            // 2 Firebase profile update
             const userProfile = {
                 displayName: data.name,
                 photoURL: data.photo,
             };
-
             await updateUserProfile(userProfile);
 
-            // 3️ Backend user save 
             const userInfo = {
                 name: data.name,
                 email: data.email,
                 photo: data.photo,
-                role: "user" // default role
+                role: "user"
             };
 
             await saveUserToDB(userInfo);
-
-            // 4️ Local state update
             setUser((prev) => ({ ...prev, ...userProfile }));
-
-            toast.success("Registration Successful!", {
-                position: "top-center"
-            });
-
+            toast.success("Registration Successful!", { position: "top-center" });
             navigate('/');
-
         } catch (error) {
-            console.error(error);
             toast.error(error.message);
         }
     };
-const handleGoogleSign = async () => {
-    try {
-        const result = await signInWithPopup(auth, googleProvider);
-        const user = result.user;
 
-        const userInfo = {
-            name: user.displayName,
-            email: user.email,
-            photo: user.photoURL,
-            role: "user"
-        };
-
-        // Google user database save kora (Upsert logic logic backend e thaka valo)
-        await saveUserToDB(userInfo);
-        
-        setUser(user);
-        toast.success('Login successful with Google');
-        navigate("/");
-    } catch (error) {
-        toast.error(error.message);
-    }
-}
+    const handleGoogleSign = async () => {
+        try {
+            const result = await signInWithPopup(auth, googleProvider);
+            const user = result.user;
+            const userInfo = {
+                name: user.displayName,
+                email: user.email,
+                photo: user.photoURL,
+                role: "user"
+            };
+            await saveUserToDB(userInfo);
+            setUser(user);
+            toast.success('Login successful with Google');
+            navigate("/");
+        } catch (error) {
+            toast.error(error.message);
+        }
+    };
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-purple-900 p-4 font-sans">
@@ -154,11 +140,18 @@ const handleGoogleSign = async () => {
                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" /></svg>
                             </span>
                             <input
-                                type="password"
+                                type={showPassword ? "text" : "password"}
                                 {...register('password', { required: "Password required", minLength: { value: 6, message: "Min 6 chars" } })}
-                                className="w-full py-2 pl-8 border-b-2 border-gray-300 focus:border-purple-600 outline-none transition-colors placeholder-gray-400 text-gray-700"
+                                className="w-full py-2 pl-8 pr-10 border-b-2 border-gray-300 focus:border-purple-600 outline-none transition-colors placeholder-gray-400 text-gray-700"
                                 placeholder="Password"
                             />
+                            <button
+                                type="button"
+                                onClick={() => setShowPassword(!showPassword)}
+                                className="absolute bottom-3 right-0 text-gray-400 hover:text-purple-600 focus:outline-none"
+                            >
+                                {showPassword ? <FaEyeSlash size={18} /> : <FaEye size={18} />}
+                            </button>
                             {errors.password && <p className="text-red-500 text-xs mt-1">{errors.password.message}</p>}
                         </div>
 
@@ -168,11 +161,18 @@ const handleGoogleSign = async () => {
                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" /></svg>
                             </span>
                             <input
-                                type="password"
+                                type={showConfirmPassword ? "text" : "password"}
                                 {...register("confirmPassword", { required: "Confirm required" })}
-                                className="w-full py-2 pl-8 border-b-2 border-gray-300 focus:border-purple-600 outline-none transition-colors placeholder-gray-400 text-gray-700"
+                                className="w-full py-2 pl-8 pr-10 border-b-2 border-gray-300 focus:border-purple-600 outline-none transition-colors placeholder-gray-400 text-gray-700"
                                 placeholder="Confirm Password"
                             />
+                            <button
+                                type="button"
+                                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                                className="absolute bottom-3 right-0 text-gray-400 hover:text-purple-600 focus:outline-none"
+                            >
+                                {showConfirmPassword ? <FaEyeSlash size={18} /> : <FaEye size={18} />}
+                            </button>
                             {errors.confirmPassword && <p className="text-red-500 text-xs mt-1">{errors.confirmPassword.message}</p>}
                         </div>
 
@@ -198,25 +198,20 @@ const handleGoogleSign = async () => {
                     </form>
                 </div>
 
-                {/* --- RIGHT SIDE: DECORATION (Purple) --- */}
+                {/* --- RIGHT SIDE: DECORATION --- */}
                 <div className="w-full md:w-1/2 bg-gradient-to-br from-purple-800 to-indigo-900 text-white flex flex-col justify-center items-center p-12 relative overflow-hidden">
-
-                    {/* Decorative Circles */}
                     <div className="absolute top-10 right-10 w-24 h-24 bg-purple-600 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
                     <div className="absolute bottom-10 left-10 w-24 h-24 bg-indigo-600 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
 
                     <div className="z-10 text-center">
                         <h2 className="text-4xl font-bold mb-4">Glad to see you!</h2>
                         <p className="mb-8 text-purple-200">Already have an account? Login now to access your chef dashboard.</p>
-
                         <Link to="/login">
                             <button className="border-2 border-white text-white font-bold py-2 px-8 rounded-full hover:bg-white hover:text-purple-800 transition duration-300">
                                 SIGN IN
                             </button>
                         </Link>
                     </div>
-
-               
                 </div>
             </div>
         </div>
