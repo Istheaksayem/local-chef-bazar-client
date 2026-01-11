@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import useAuth from "../../../Hooks/useAuth";
