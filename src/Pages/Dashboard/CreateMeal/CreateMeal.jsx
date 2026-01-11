@@ -18,7 +18,6 @@ const CreateMeal = () => {
     }
 
     try {
-      // 🔹 Image upload
       const imageData = new FormData();
       imageData.append("image", image);
 
@@ -37,7 +36,6 @@ const CreateMeal = () => {
         return;
       }
 
-      // 🔹 Meal object
       const mealData = {
         foodName: data.foodName,
         chefName: data.chefName,
@@ -47,19 +45,19 @@ const CreateMeal = () => {
         ingredients: data.ingredients.split(","),
         estimatedDeliveryTime: data.estimatedDeliveryTime,
         chefExperience: data.chefExperience,
-        chefId: data.chefId,
         chefEmail: user.email,
         createdAt: new Date(),
       };
 
-      // 🔹 Save to DB
-      const res = await fetch("https://local-chef-bazar-server-theta.vercel.app/meals", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify(mealData),
-      });
+      const res = await fetch(
+        "https://local-chef-bazar-server-theta.vercel.app/meals",
+        {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify(mealData),
+        }
+      );
 
-      //  Fraud chef case
       if (res.status === 403) {
         const err = await res.json();
         toast.error(err.message || "You are blocked");
@@ -79,29 +77,39 @@ const CreateMeal = () => {
     }
   };
 
+  const inputStyle =
+    "input input-bordered w-full bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 border-gray-300 dark:border-gray-700";
+
   return (
-    <div className="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow">
-       <Helmet><title>CreateMeal | local chef Bazar</title></Helmet>
-      <h2 className="text-2xl font-bold mb-4">Create Meal</h2>
+    <div className="max-w-3xl mx-auto bg-white dark:bg-gray-900 p-6 rounded-lg shadow mt-6">
+      <Helmet>
+        <title>CreateMeal | Local Chef Bazar</title>
+      </Helmet>
+
+      <h2 className="text-2xl font-bold mb-4 text-gray-800 dark:text-gray-100">
+        Create Meal
+      </h2>
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-
         <input
           {...register("foodName", { required: true })}
           placeholder="Food Name"
-          className="input input-bordered w-full"
+          className={inputStyle}
         />
 
         <input
           {...register("chefName", { required: true })}
           placeholder="Chef Name"
-          className="input input-bordered w-full"
+          className={inputStyle}
         />
 
         <input
           type="file"
           accept="image/*"
-          className="file-input file-input-bordered w-full"
+          className="file-input file-input-bordered w-full
+                     bg-white dark:bg-gray-800
+                     text-gray-800 dark:text-gray-100
+                     border-gray-300 dark:border-gray-700"
           onChange={(e) => setImage(e.target.files[0])}
         />
 
@@ -109,41 +117,43 @@ const CreateMeal = () => {
           type="number"
           {...register("price", { required: true })}
           placeholder="Price"
-          className="input input-bordered w-full"
+          className={inputStyle}
         />
 
         <textarea
           {...register("ingredients", { required: true })}
           placeholder="Ingredients (comma separated)"
-          className="textarea textarea-bordered w-full"
+          className="textarea textarea-bordered w-full
+                     bg-white dark:bg-gray-800
+                     text-gray-800 dark:text-gray-100
+                     border-gray-300 dark:border-gray-700"
         />
 
         <input
           {...register("estimatedDeliveryTime", { required: true })}
           placeholder="Estimated Delivery Time"
-          className="input input-bordered w-full"
+          className={inputStyle}
         />
 
         <input
           {...register("chefExperience", { required: true })}
           placeholder="Chef Experience"
-          className="input input-bordered w-full"
+          className={inputStyle}
         />
-
-        {/* <input
-          {...register("chefId", { required: true })}
-          placeholder="Chef ID"
-          className="input input-bordered w-full"
-        /> */}
 
         {/* Read-only email */}
         <input
           value={user?.email}
           readOnly
-          className="input input-bordered w-full bg-gray-100"
+          className="input input-bordered w-full
+                     bg-gray-100 dark:bg-gray-700
+                     text-gray-800 dark:text-gray-100
+                     border-gray-300 dark:border-gray-700"
         />
 
-        <button className="btn btn-primary w-full">Add Meal</button>
+        <button className="btn btn-primary w-full">
+          Add Meal
+        </button>
       </form>
     </div>
   );

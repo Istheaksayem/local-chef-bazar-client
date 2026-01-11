@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-
 import { toast } from "react-toastify";
 import useAuth from "../../../Hooks/useAuth";
 import { Helmet } from "react-helmet-async";
@@ -9,7 +8,6 @@ const FavoriteMeals = () => {
   const [favorites, setFavorites] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // 🔹 get favorite meals
   useEffect(() => {
     if (!user) return;
 
@@ -21,7 +19,6 @@ const FavoriteMeals = () => {
       });
   }, [user]);
 
-  // 🔹 delete favorite
   const handleDelete = (id) => {
     if (!window.confirm("Remove this meal from favorites?")) return;
 
@@ -38,44 +35,45 @@ const FavoriteMeals = () => {
   };
 
   if (loading) {
-    return <p className="text-center mt-10">Loading favorites...</p>;
+    return<div className="flex justify-center items-center h-64"><span className="loading loading-bars loading-lg text-orange-500"></span></div>;
   }
 
   return (
-    <div className="container mx-auto p-6">
-       <Helmet><title>FavoritesMeals | local chef Bazar</title></Helmet>
+    <div className="container mx-auto p-6 dark:bg-gray-900 dark:text-gray-200">
+      <Helmet>
+        <title>FavoritesMeals | Local Chef Bazar</title>
+      </Helmet>
+
       <h2 className="text-3xl font-bold mb-6">My Favorite Meals</h2>
 
       {favorites.length === 0 ? (
         <p>No favorite meals found.</p>
       ) : (
         <div className="overflow-x-auto">
-          <table className="table w-full border">
-            <thead className="bg-gray-200">
+          <table className="table w-full border border-gray-300 dark:border-gray-700">
+            <thead className="bg-gray-200 dark:bg-gray-800">
               <tr>
-                <th>SL NO</th>
-                <th>Meal Name</th>
-                <th>Chef Name</th>
-                <th>Price</th>
-                <th>Date Added</th>
-                <th>Action</th>
+                <th className="dark:text-white bg-green-600">SL NO</th>
+                <th className="dark:text-white bg-green-600">Meal Name</th>
+                <th className="dark:text-white bg-green-600">Chef Name</th>
+                <th className="dark:text-white bg-green-600">Price</th>
+                <th className="dark:text-white bg-green-600">Date Added</th>
+                <th className="dark:text-white bg-green-600">Action</th>
               </tr>
             </thead>
 
             <tbody>
               {favorites.map((item, index) => (
-                <tr key={item._id}>
+                <tr key={item._id} className="border-b border-gray-300 dark:border-gray-700">
                   <td>{index + 1}</td>
                   <td>{item.mealName}</td>
                   <td>{item.chefName}</td>
                   <td>${item.price || "N/A"}</td>
-                  <td>
-                    {new Date(item.addedTime).toLocaleDateString()}
-                  </td>
+                  <td>{new Date(item.addedTime).toLocaleDateString()}</td>
                   <td>
                     <button
                       onClick={() => handleDelete(item._id)}
-                      className="btn btn-sm bg-red-500 text-white"
+                      className="btn btn-sm bg-red-500 text-white hover:bg-red-600"
                     >
                       Delete
                     </button>
@@ -83,7 +81,6 @@ const FavoriteMeals = () => {
                 </tr>
               ))}
             </tbody>
-
           </table>
         </div>
       )}

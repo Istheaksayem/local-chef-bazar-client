@@ -8,11 +8,12 @@ const UpdateMeal = () => {
   const navigate = useNavigate();
   const [meal, setMeal] = useState(null);
 
-  // load meal
   useEffect(() => {
-    fetch(`https://local-chef-bazar-server-theta.vercel.app/meals-details/${id}`)
-      .then(res => res.json())
-      .then(data => setMeal(data));
+    fetch(
+      `https://local-chef-bazar-server-theta.vercel.app/meals-details/${id}`
+    )
+      .then((res) => res.json())
+      .then((data) => setMeal(data));
   }, [id]);
 
   const handleUpdate = (e) => {
@@ -26,13 +27,16 @@ const UpdateMeal = () => {
       ingredients: form.ingredients.value.split(","),
     };
 
-    fetch(`https://local-chef-bazar-server-theta.vercel.app/meals/${id}`, {
-      method: "PUT",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify(updatedMeal)
-    })
-      .then(res => res.json())
-      .then(data => {
+    fetch(
+      `https://local-chef-bazar-server-theta.vercel.app/meals/${id}`,
+      {
+        method: "PUT",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(updatedMeal),
+      }
+    )
+      .then((res) => res.json())
+      .then((data) => {
         if (data.modifiedCount > 0) {
           toast.success("Meal updated successfully ✅");
           navigate("/dashboard/my-meals");
@@ -40,44 +44,62 @@ const UpdateMeal = () => {
       });
   };
 
-  if (!meal) return <p>Loading...</p>;
+  if (!meal)
+    return (
+      <p className="text-center text-gray-600 dark:text-gray-300">
+        Loading...
+      </p>
+    );
+
+  const inputStyle =
+    "input input-bordered w-full bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 border-gray-300 dark:border-gray-700";
 
   return (
-    <div className="max-w-xl mx-auto p-6 bg-white shadow rounded">
-       <Helmet><title>UpdateMeal | local chef Bazar</title></Helmet>
-      <h2 className="text-xl font-bold mb-4">Update Meal</h2>
+    <div className="max-w-xl mx-auto p-6 bg-white dark:bg-gray-900 shadow rounded mt-6">
+      <Helmet>
+        <title>UpdateMeal | Local Chef Bazar</title>
+      </Helmet>
+
+      <h2 className="text-xl font-bold mb-4 text-gray-800 dark:text-gray-100">
+        Update Meal
+      </h2>
 
       <form onSubmit={handleUpdate} className="space-y-4">
         <input
           defaultValue={meal?.foodName}
           name="foodName"
-          placeholder="FoodName"
-          className="input input-bordered w-full"
+          placeholder="Food Name"
+          className={inputStyle}
         />
 
         <input
           defaultValue={meal?.price}
           name="price"
           type="number"
-          placeholder="price"
-          className="input input-bordered w-full"
+          placeholder="Price"
+          className={inputStyle}
         />
 
         <textarea
           defaultValue={meal?.ingredients?.join(",")}
           name="ingredients"
-          placeholder="ingredients"
-          className="textarea textarea-bordered w-full"
+          placeholder="Ingredients"
+          className="textarea textarea-bordered w-full
+                     bg-white dark:bg-gray-800
+                     text-gray-800 dark:text-gray-100
+                     border-gray-300 dark:border-gray-700"
         />
 
         <input
           defaultValue={meal?.estimatedDeliveryTime}
           name="estimatedDeliveryTime"
-          placeholder="estimatedDeliveryTime"
-          className="input input-bordered w-full"
+          placeholder="Estimated Delivery Time"
+          className={inputStyle}
         />
 
-        <button className="btn btn-primary w-full">Update Meal</button>
+        <button className="btn btn-primary w-full">
+          Update Meal
+        </button>
       </form>
     </div>
   );
