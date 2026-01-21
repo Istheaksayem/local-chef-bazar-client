@@ -51,7 +51,7 @@ const MyMeals = () => {
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {meals.map(meal => (
-          <div key={meal._id} className="card bg-white shadow-xl">
+          <div key={meal._id} className="card bg-base-100 shadow-xl text-base-content">
             <figure>
               <img src={meal.foodImage} alt={meal.foodName} className="h-48 w-full object-cover"/>
             </figure>

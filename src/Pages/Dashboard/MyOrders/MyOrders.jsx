@@ -24,6 +24,7 @@ const MyOrders = () => {
         body: JSON.stringify(paymentInfo),
       }
     );
+    console.log(res,paymentInfo)
 
     if (!res.ok) {
       throw new Error("Payment session failed");

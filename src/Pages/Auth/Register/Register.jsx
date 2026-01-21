@@ -1,10 +1,9 @@
-import React, { useState } from 'react'; // useState add kora hoyeche
+import React, { useState } from 'react'; 
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import useAuth from '../../../Hooks/useAuth';
 import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
-// import { Link, useNavigate } from 'react-router-dom'; 
-import { FaEye, FaEyeSlash } from 'react-icons/fa'; // Icons import
+import { FaEye, FaEyeSlash } from 'react-icons/fa'; 
 import { Link, useNavigate } from 'react-router';
 
 const auth = getAuth();
