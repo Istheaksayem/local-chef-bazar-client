@@ -1,90 +1,156 @@
-# 🍽️ LocalChefBazaar — Marketplace for Local Home-Cooked Meals
+🍲 LocalChefBazaar — Marketplace for Local Home-Cooked Meals
 
-LocalChefBazaar is a full-stack MERN application that connects local home chefs with customers who are looking for fresh, affordable, and homemade meals. Users can browse meals, place orders, track delivery, and leave reviews, while chefs can manage their menus and orders. Admins control the overall platform.
+<p align="center">
+  <img src="https://i.ibb.co.com/WWKTKsd7/Screenshot-2026-04-17-142925.png" alt="Project Banner" width="100%">
+</p>
 
-🔗 **Live Site:** https://storied-pony-5556cc.netlify.app
-🔗 **Client Repo:** https://github.com/Istheaksayem/local-chef-bazar-client 
-🔗 **Server Repo:** https://github.com/Istheaksayem/local-chef-bazar-server 
-
----
-
-## 🎯 Purpose
-The purpose of this project is to build a modern role-based food marketplace platform using the MERN stack, demonstrating authentication, authorization, CRUD operations, payments, dashboards, and real-world application features.
+## 🚀 Live Website
+🔗https://dynamic-halva-2b4012.netlify.app/
 
 ---
 
-## 🚀 Key Features
+## 📌 Project Overview
 
-### 👥 User Roles
-- **Admin**: Manage users, requests, and platform statistics  
-- **Chef**: Create meals, manage orders, update meal info  
-- **User**: Browse meals, place orders, review, and favorite meals  
+LocalChefBazaar is a modern full-stack MERN platform that connects home cooks with customers who want fresh, homemade meals.
+
+👨‍🍳 Home chefs can:
+- Upload meals
+- Manage orders
+- Earn money from home
+
+🧑‍💻 Customers can:
+- Browse meals
+- Place orders
+- Track delivery
+- Give reviews
+
+---
+
+## 🎯 Key Features
 
 ### 🔐 Authentication & Security
-- Firebase Authentication (Email & Password)
-- JWT-based secure API access
-- httpOnly cookies for token storage
-- Environment variables for Firebase & MongoDB credentials
-
-### 🏠 Public Pages
-- Home with animated banner (Framer Motion)
-- Daily meals (dynamic)
-- Customer reviews
-- Meals page with sorting & pagination
-- Login & Register
-
-### 📄 Private Pages
-- Meal Details with reviews & favorites
-- Order & payment (Stripe)
-- Dashboard (role-based)
-- Profile management
-
-### 📊 Dashboards
-- **User Dashboard**: Orders, reviews, favorites, profile  
-- **Chef Dashboard**: Create meals, manage meals & orders  
-- **Admin Dashboard**: Manage users, requests, statistics  
-
-### 💳 Payment
-- Stripe payment integration
-- Payment history saved in MongoDB
-- Order payment status update
-
-### ⭐ Extra Functionalities
-- Review system with update & delete
-- Favorite meals system
-- Fraud user control
-- Search & pagination
-- Dynamic route titles
-- Responsive design
-- Loading & error pages
-- Dark/Light theme (optional)
+- Email & Password Login (Firebase Auth)
+- JWT Authentication (Secure API)
+- Protected Routes
+- Environment Variable Protected Keys
 
 ---
 
-## 🧰 Tech Stack
+### 👤 User Roles & Permissions
 
-### Frontend
+#### 🧑 User (Customer)
+- Browse meals
+- Add to favorites
+- Place orders
+- Make payments (Stripe)
+- Give reviews
+
+#### 👨‍🍳 Chef
+- Create meals
+- Manage own meals
+- Accept / Cancel / Deliver orders
+
+#### 🛡️ Admin
+- Manage users
+- Approves Chef/Admin requests
+- View platform statistics
+- Mark users as Fraud
+
+---
+
+### 🍽️ Meals System
+- Dynamic meals from database
+- Sorting by price (ASC/DESC)
+- Pagination (10 items per page)
+- Meal details page with:
+  - Ingredients
+  - Chef info
+  - Delivery time
+
+---
+
+### ⭐ Reviews & Favorites
+- Add review for meals
+- Update / Delete review
+- Add to favorite meals
+- Prevent duplicate favorites
+
+---
+
+### 🛒 Order System
+- Place order with quantity
+- Auto price calculation
+- Order status tracking:
+  - Pending → Accepted → Delivered
+- SweetAlert confirmation
+
+---
+
+### 💳 Payment Integration
+- Stripe payment system
+- Payment history saved
+- Payment status update
+
+---
+
+### 📊 Dashboard System
+
+#### 👤 User Dashboard
+- My Profile
+- My Orders
+- My Reviews
+- Favorite Meals
+
+#### 👨‍🍳 Chef Dashboard
+- Create Meal
+- My Meals (Update/Delete)
+- Order Requests
+
+#### 🛡️ Admin Dashboard
+- Manage Users
+- Manage Requests
+- Platform Statistics (Recharts)
+
+---
+
+### 📈 Platform Statistics
+- Total Users
+- Total Payments
+- Orders Pending / Delivered
+- Charts using Recharts
+
+---
+
+
+## 🛠️ Technologies Used
+
+### Frontend:
 - React.js
-- React Router DOM
+- React Router
 - Tailwind CSS
-- Framer Motion
+- Firebase Authentication
 - React Hook Form
 - Axios
-- Firebase Auth
-- SweetAlert2 / React Toastify
-- Recharts
 
-### Backend
+### Backend:
 - Node.js
 - Express.js
 - MongoDB
-- JWT
+- JWT Authentication
+
+### Payment:
 - Stripe
-- CORS
+
+### Charts:
+- Recharts
+
+## 📦 NPM Packages
+
+- react-router
+- firebase
+- react-hook-form
+- sweetalert2
+- jsonwebtoken
+- cors
 - dotenv
-
----
-
-## 📦 NPM Packages Used
-
-### Client
+- stripe
